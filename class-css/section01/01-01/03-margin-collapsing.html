@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>마진 상쇄 실습</title>
+    <style>
+        /* 마진은 상쇄가 된다. 만약 100px 80px의 마진이 만나면 더 큰 마진으로 적용된다.
+        마진 상쇄로 컴포넌트들을 순차적으로 배치해야 할 때, 사용한다. */
+
+        .box1 {
+            width: 300px;
+            height: 300px;
+            background-color: skyblue;
+            margin: 100px;
+        }
+
+        .box2 {
+            width: 300px;
+            height: 300px;
+            background-color: yellow;
+            margin: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+
+    </div>
+    <div class="box2">
+
+    </div>
+</body>
+</html>
