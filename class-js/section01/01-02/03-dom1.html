@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Dom실습</title>
+    <script>
+        const findFavorite = () => {
+            const 과일 = document.getElementById("HTML_favorite").innerText
+            alert(`내가 가장 좋아하는 과일은? ${과일}`)
+        }
+
+        const profileSave = () => {
+            const myname = document.getElementById("HTML_name").value
+            document.getElementById("hello").innerText = `${myname}님 환영합니다.`
+        }
+    </script>
+</head>
+<body>
+    <div id="HTML_favorite">사과</div>
+    <button onclick="findFavorite()">과일찾기</button>
+
+    <br><br>
+
+    오늘의 인삿말: <div id="hello"></div>
+    <input type="text" id="HTML_name"/>
+    <button onclick="profileSave()">프로필 등록하기</button>
+</body>
+</html>

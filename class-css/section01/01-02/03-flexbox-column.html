@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>column</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh; /* vh란? viewport-height 보이는 화면의 높이 */
+        }
+
+        .CssParent {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: skyblue;
+            
+            height: 100%; /* %는 부모 기준! */
+        }
+    </style>
+</head>
+<body>
+    <div class="CssParent">
+        <div>메뉴</div>
+        <div>알림</div>
+    </div>    
+</body>
+</html>
