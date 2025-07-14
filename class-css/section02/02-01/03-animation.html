@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>애니메이션 실습</title>
+    <style>
+        .css_paper {
+            width: 100px;
+            height: 150px;
+            background-color: skyblue;
+        }
+        .css_paper:hover {
+            animation-name: myanimation;
+            animation-duration: 0.5s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes myanimation {
+            from {
+                transform: rotateY(20deg);
+                background: rgb(135, 137, 235);
+            }
+            50% {
+                transform: rotateY(100deg);
+                background-color: rgb(203, 135, 235);
+            }   
+            to {
+                transform: rotateY(180deg);
+                background-color: rgb(235, 135, 205);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="css_paper"></div>
+</body>
+</html>
