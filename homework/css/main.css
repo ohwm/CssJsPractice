@@ -55,3 +55,38 @@ body {
     height: 50px;
     padding: 12px;
 }
+
+.container_table {
+    display: flex;
+}
+
+.table_plus {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+    height: 450px;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 24px;
+}
+
+.plus_name {
+    width: 100%;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: -1px;
+}
+
+.plus_writing {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.writing_emotion {
+    width: 100%;
+}
+
