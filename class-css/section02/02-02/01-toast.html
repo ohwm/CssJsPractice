@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>토스트 애니메이션 실습</title>
+    <style>
+        .css_copy_image {
+            font-size: 13px;
+            font-weight: 400;
+            width: 300px;
+            height: 30px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            /* 수직정렬을 할 때에는 text-justify 이런식이 아닌 line-height를 div 크기로 맞추면 된다. */
+            border-radius: 10px;
+            animation-name: myanimation;
+            animation-duration: 2s;
+        }
+
+        @keyframes myanimation {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="css_copy_image">복사되었습니다.</div>
+</body>
+</html>
