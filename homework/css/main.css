@@ -57,16 +57,68 @@ body {
 }
 
 .container_table {
+    margin-top: 40px;
     display: flex;
 }
 
+#table_items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.diary_container {
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.diary_down {
+    padding: 8px;
+}
+
+.diary_container img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.diary_first_line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.emotion_name {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: -1px;
+}
+
+.diary_date {
+    color: #919191;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -1px;
+}
+
+.diary_title {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
 .table_plus {
+    margin-left: 24px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 400px;
-    height: 450px;
+    width: 280px;
+    height: 400px;
     border: 2px solid black;
     border-radius: 15px;
     padding: 24px;
@@ -90,3 +142,26 @@ body {
     width: 100%;
 }
 
+/* 푸터는 어떻게 설정하는지 더 공부해보자 */
+.footer {
+    background-color: #F2F2F2;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 24px;
+}
+
+.footer_container {
+    min-width: 1168px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer_title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 16px;
+    letter-spacing: -1px;
+}

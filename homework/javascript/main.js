@@ -1,4 +1,5 @@
 const diaryLiberary = []
+let diaryCnt = -1;
 
 const uploadDiary = () => {
     const currentDiary = document.getElementById("table_items").innerHTML
@@ -21,32 +22,55 @@ const uploadDiary = () => {
         emotion
     }
     diaryLiberary.push(diary)
+    diaryCnt += 1
 
     let emotionName
+    let emotionFontColor
     switch (emotion) {
         case 'happy':
             emotionName = "행복해요"
+            emotionFontColor = "#EA5757"
+            break;
         case 'sad':
             emotionName = "슬퍼요"
+            emotionFontColor = "#28B4E1"
+            break;
         case 'suprised':
             emotionName = "놀랐어요"
+            emotionFontColor = "#D59029"
+            break;
         case 'angry':
             emotionName = "화나요"
+            emotionFontColor = "#777777"
+            break;
         case 'extra':
             emotionName = "기타"
+            emotionFontColor = "#A229ED"
     }
 
     const newDiaryConstructor = `
-        <div class="diary_container">
+        <div class="diary_container" onclick="diaryContentsOpen(${diaryCnt})">
             <img src="./assets/img/emotion/${emotion}.png" alt="">
-            <div class="diary_first_line">
-               <div class="emotion_name">${emotionName}</div>
-                <div class="diary_date">${formattedDate}</div>
+            <div class="diary_down">
+                <div class="diary_first_line">
+                    <div class="emotion_name" style="color: ${emotionFontColor};">${emotionName}</div>
+                    <div class="diary_date">${formattedDate}</div>
+                </div>
+                <div class="diary_title">${title}</div>
             </div>
-            <div class="diary_title">${title}</div>
         </div>
     `
     console.log(newDiaryConstructor)
 
-    document.getElementById("table_itmes").innerHTML = currentDiary + newDiaryConstructor
+    document.getElementById("table_items").innerHTML = currentDiary + newDiaryConstructor
+}
+
+const diaryContentsOpen = (Cnt) => {
+    const diaryTitle = diaryLiberary[Cnt].title
+    const diaryContents = diaryLiberary[Cnt].contents
+
+    alert(`
+        제목: ${diaryTitle}
+        내용: ${diaryContents}
+    `)
 }
