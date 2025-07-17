@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>상세페이지</title>
+    <script>
+        const queryString = location.search
+        const itemBox = new URLSearchParams(queryString)
+        const banana = itemBox.get("banana")
+        const apple = itemBox.get("apple")
+
+        alert(`바나나는 ${banana}개, 사과는 ${apple}개 있습니다.`)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>스켈레톤 실습</title>
+    <style>
+        .skeleton_background {
+            width: 500px;
+            height: 500px;
+            border-radius: 30px;
+            background-color: lightgray;
+        }
+
+        .skeleton_stick {
+            width: 100px;
+            height: 1000px;
+            background-color: white;
+            filter: blur(60px);
+            animation-name: mine;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes mine {
+            from {
+                transform: translate(-400px, -400px) rotateZ(30deg);
+            }
+            to {
+                transform: translate(700px, 200px) rotateZ(30deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="skeleton_background">
+        <div class="skeleton_stick"></div>
+    </div>
+</body>
+</html>
