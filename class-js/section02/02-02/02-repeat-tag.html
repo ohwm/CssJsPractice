@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>반복문으로 태그만들기 실습</title>
+    <script>
+        const makeTagOne = () => {
+            document.getElementById("sketchbook1").innerHTML = `
+                <h1>사과<h1>
+            `
+        }
+
+        const makeTagThree = () => {
+            const friends = ["철수", "영희", "훈이"]
+            
+            // 1. 친구들을 태그로 바꾸기
+            // element => el, num => index (실무적인 사용법)
+            const friendsTag = friends.map((el, index) => `
+                <h1>${el}는 ${index}번째<h1>
+            `)
+
+            // 2. 반복문으로 만든 friendsTag.join("")
+            document.getElementById("sketchbook2").innerHTML = friendsTag.join("")
+        }
+    </script>
+</head>
+<body>
+    <div id="sketchbook1"></div>
+    <button onclick="makeTagOne()">h1태그 1개 만들기</button>
+    
+    <div id="sketchbook2"></div>
+    <button onclick="makeTagThree()">h1태그 3개 만들기</button>
+</body>
+</html>
