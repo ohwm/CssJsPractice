@@ -11,6 +11,10 @@ body {
   align-items: center;
 }
 
+a {
+    text-decoration: none;
+}
+
 .container {
     margin: 0 20px 40px;
 }
@@ -56,6 +60,22 @@ body {
     padding: 12px;
 }
 
+.container_findAndPlus {
+    margin-top: 32px;
+    width: 100%;
+    gap: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#emotion_filter {
+    width: 120px;
+    height: 48px;
+    border: 1px solid #C7C7C7;
+    border-radius: 10px;
+    padding: 10px 12px;
+}
+
 .container_table {
     margin-top: 40px;
     display: flex;
@@ -72,6 +92,15 @@ body {
     display: flex;
     flex-direction: column;
     gap: 8px;
+
+    transition: 
+        transform 0.5s,
+        filter 0.5s;
+}
+
+.diary_container:hover {
+    transform: scale(1.1);
+    filter: blur(5px);
 }
 
 .diary_down {

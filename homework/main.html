@@ -20,6 +20,20 @@
             <div class="nav_unselected">사진보관함</div>
         </div>
 
+        <div class="container_findAndPlus">
+            <div class="filters">
+                <select name="emotion" id="emotion_filter" onchange="filteringDiary(event)">
+                    <option value="all">전체</option>
+                    <option value="happy">행복해요</option>
+                    <option value="sad">슬퍼요</option>
+                    <option value="suprised">놀랐어요</option>
+                    <option value="angry">화나요</option>
+                    <option value="extra">기타</option>
+                </select>
+            </div>
+            <button>일기쓰기</button>
+        </div>
+
         <div class="container_table">
             <div id="table_items">
                 <!-- 아이템 추가되는 곳 -->

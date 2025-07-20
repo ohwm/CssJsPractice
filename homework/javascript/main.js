@@ -1,8 +1,15 @@
-const diaryLiberary = []
-let diaryCnt = -1;
+window.onload = () => {
+    const diary = JSON.parse(localStorage.getItem("diaryArray"))
+    const diaryLiberary = diary === null ? [] : diary
+    loadDiary(diary)
+}
 
 const uploadDiary = () => {
-    const currentDiary = document.getElementById("table_items").innerHTML
+    const diaryLocal = JSON.parse(localStorage.getItem("diaryArray"))
+    const diaryLiberary = diaryLocal === null ? [] : diaryLocal
+
+    let diaryCnt = diaryLiberary.length;
+    console.log(diaryCnt)
 
     const today = new Date();
 
@@ -15,15 +22,6 @@ const uploadDiary = () => {
     const title = document.getElementById("title_value").value
     const contents = document.getElementById("contents_value").value
     const emotion = document.querySelector('input[name="emoge"]:checked').value;
-    const diary = {
-        formattedDate,
-        title,
-        contents,
-        emotion
-    }
-    diaryLiberary.push(diary)
-    diaryCnt += 1
-
     let emotionName
     let emotionFontColor
     switch (emotion) {
@@ -48,29 +46,47 @@ const uploadDiary = () => {
             emotionFontColor = "#A229ED"
     }
 
-    const newDiaryConstructor = `
-        <div class="diary_container" onclick="diaryContentsOpen(${diaryCnt})">
-            <img src="./assets/img/emotion/${emotion}.png" alt="">
-            <div class="diary_down">
-                <div class="diary_first_line">
-                    <div class="emotion_name" style="color: ${emotionFontColor};">${emotionName}</div>
-                    <div class="diary_date">${formattedDate}</div>
-                </div>
-                <div class="diary_title">${title}</div>
-            </div>
-        </div>
-    `
-    console.log(newDiaryConstructor)
+    const diary = {
+        formattedDate,
+        title,
+        contents,
+        emotion,
+        emotionName,
+        emotionFontColor,
+        diaryCnt
+    }
+    diaryLiberary.push(diary)
+    localStorage.setItem("diaryArray", JSON.stringify(diaryLiberary));
 
-    document.getElementById("table_items").innerHTML = currentDiary + newDiaryConstructor
+    loadDiary()
 }
 
-const diaryContentsOpen = (Cnt) => {
-    const diaryTitle = diaryLiberary[Cnt].title
-    const diaryContents = diaryLiberary[Cnt].contents
+const filteringDiary = (event) => {
+    const emotionValue = event.target.value
+    const diaryArray = JSON.parse(localStorage.getItem("diaryArray"));
+    let filteredDiary = emotionValue !== "all" ? diaryArray.filter((el) => el.emotion === emotionValue) : diaryArray
 
-    alert(`
-        제목: ${diaryTitle}
-        내용: ${diaryContents}
-    `)
+    loadDiary(filteredDiary)
+}
+
+const loadDiary = (diary) => {
+    console.log(diary)
+    // map과 join에서 오류가 생김
+    const diaryTag = diary !== null ? diary.map((el) => `
+        <a href="./detail.html?number=${el.diaryCnt}">
+            <div class="diary_container">
+                <img src="./assets/img/emotion/${el.emotion}.png" alt="">
+                <div class="diary_down">
+                    <div class="diary_first_line">
+                        <div class="emotion_name" style="color: ${el.emotionFontColor};">${el.emotionName}</div>
+                        <div class="diary_date">${el.formattedDate}</div>
+                    </div>
+                    <div class="diary_title">${el.title}</div>
+                </div>
+            </div>
+        <a />
+    `) : null;
+
+    if(diary !== null)
+        document.getElementById("table_items").innerHTML = diaryTag.join("")
 }
