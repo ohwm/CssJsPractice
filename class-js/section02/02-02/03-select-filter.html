@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>선택박스와 필터 실습</title>
+    <script>
+        const inputing = (event) => {
+            console.log(event.target.value)
+        }
+
+        const filtering = (event) => {
+            const fruit = event.target.value;
+            console.log(fruit)
+
+            const friends = [
+            {name: "철수",likefruit: "사과"},
+            {name: "영희",likefruit: "바나나"},
+            {name: "훈이",likefruit: "사과"}
+            ]
+            switch(fruit) {
+                case "apple": {
+                    const likeApple = friends.filter((el) => el.likefruit === "사과")
+                    console.log(likeApple)
+                    break
+                }
+                case "banana": {
+                    const likeBanana = friends.filter((el) => el.likefruit === "바나나")
+                    console.log(likeBanana)
+                    break
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="text" oninput="inputing(event)"/>
+
+    <br /><br />
+
+    <select onchange="filtering(event)" name="" id="">
+        <option>과일을 선택하세요</option>
+        <option value="apple">사과</option>
+        <option value="banana">바나나</option>
+    </select>
+</body>
+</html>

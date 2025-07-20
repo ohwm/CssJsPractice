@@ -15,10 +15,25 @@
             }
 
             const boxFriend = [friend1, friend2]
+            localStorage.setItem("friend_list", JSON.stringify(boxFriend))
         }
 
         const loadFriend = () => {
+            // 1. 친구목록 가져오기
+            const boxFriend = localStorage.getItem("friend_list")
+            const friendArr = JSON.parse(boxFriend === null ? "[]" : boxFriend)
 
+            // 2. 배열을 반복하여 태그 그리기
+            const friendHTML = friendArr.map((el, index) => `
+                <div>
+                    <a href="./02-routing2.html?number=${index}">
+                        이름은 ${el.name}이고 나이는 ${el.age}살 입니다.    
+                    <a/>    
+                <div/>
+            `).join("") // map 뒤에서 바로 join 하는 것도 가능함
+            
+            // 3. 친구목록 그리기
+            document.getElementById("friend_list").innerHTML = friendHTML;
         }
     </script>
 </head>
