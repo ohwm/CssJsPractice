@@ -58,7 +58,7 @@ const uploadDiary = () => {
     diaryLiberary.push(diary)
     localStorage.setItem("diaryArray", JSON.stringify(diaryLiberary));
 
-    loadDiary()
+    loadDiary(diaryLiberary)
 }
 
 const filteringDiary = (event) => {
