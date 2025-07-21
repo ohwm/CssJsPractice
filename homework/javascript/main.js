@@ -28,22 +28,27 @@ const uploadDiary = () => {
         case 'happy':
             emotionName = "행복해요"
             emotionFontColor = "#EA5757"
+            emotionNum = 1
             break;
         case 'sad':
             emotionName = "슬퍼요"
             emotionFontColor = "#28B4E1"
+            emotionNum = 2
             break;
         case 'suprised':
             emotionName = "놀랐어요"
             emotionFontColor = "#D59029"
+            emotionNum = 3
             break;
         case 'angry':
             emotionName = "화나요"
             emotionFontColor = "#777777"
+            emotionNum = 4
             break;
         case 'extra':
             emotionName = "기타"
             emotionFontColor = "#A229ED"
+            emotionNum = 5
     }
 
     const diary = {
@@ -53,7 +58,7 @@ const uploadDiary = () => {
         emotion,
         emotionName,
         emotionFontColor,
-        diaryCnt
+        diaryCnt,
     }
     diaryLiberary.push(diary)
     localStorage.setItem("diaryArray", JSON.stringify(diaryLiberary));
