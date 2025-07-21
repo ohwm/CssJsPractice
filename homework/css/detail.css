@@ -1,5 +1,19 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .container {
     margin: 0 20px 40px;
+    width: 1168px;
 }
 
 .container_header {
@@ -10,4 +24,102 @@
     letter-spacing: -1px;
     font-weight: 700;
     padding: 20px;
+}
+
+#container_diary {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.diary_title {
+    margin-top: 64px;
+    width: 100%;
+    height: 36px;
+    border-bottom: 2px solid black;
+    h1 {
+        font-size: 22px;
+        line-height: 24px;
+        font-weight: 700;
+        letter-spacing: -1px;
+    }
+}
+
+.diary_second_line {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.emotion {
+    display: flex;
+    align-items: center;
+}
+
+.emotion_img {
+    width: 32px;
+}
+
+.emotion_name {
+    margin: 16px 0;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 600;
+    letter-spacing: -1px;
+}
+
+.diary_contents {
+    width: 100%;
+    margin: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    h1 {
+        width: 100%;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+        letter-spacing: -1px;
+    }
+}
+
+.contents_read {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -1px;
+}
+
+.diary_buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.diary_back {
+    width: 104px;
+    height: 48px;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: -1px;
+    
+}
+
+.diary_modify {
+    width: 104px;
+    height: 48px;
+    border-radius: 10px;
+    border: 1px solid black;
+    color: white;
+    background-color: black;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: -1px;
 }
