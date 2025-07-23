@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>윈도우 스크롤 리스너 실습</title>
+    <script>
+        window.addEventListener("scroll", () => {
+            const scrollheight = window.scrollY
+            console.log(`스크롤 길이 : ${scrollheight}`)
+            if (scrollheight > 0) {
+                document.getElementById("html_img").style = "border: 20px solid red"
+            } else {
+                document.getElementById("html_img").style = "border: none"
+            }
+        })
+    </script>
+</head>
+<body>
+    <img id="html_img" src="./00-image.jpg" width="2000px" alt="">
+</body>
+</html>

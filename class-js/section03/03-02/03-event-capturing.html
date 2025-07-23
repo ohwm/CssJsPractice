@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>이벤트 캡처링 실습</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        const upscale = () => {
+            document.getElementById("html_img").style = "width: 100vw; height: 100vw;"
+        }
+
+        const like = (event) => {
+            event.stopPropagation()
+            alert("좋아요가 +1 올랐습니다.")
+        }
+
+        // 이벤트 캡처링 : 가장 밑에 있는 걸 먼저 실행한다. 버튼을 눌렀을 때, 로그인 확인 등에 사용된다.
+
+        const loginCheck = (event) => {
+            event.stopPropagation() // 방향만 반대일 뿐, 전파는 막아야 한다.
+
+            const password = prompt("로그인 후 이용해 주세요.")
+            if (password === "1234") {
+                document.documentElement.removeEventListener("click", loginCheck, { capture: true })
+            } else {
+                alert("비밀번호가 틀렸습니다. 다시 시도해 주세요.")
+            }
+        }
+
+        // html 건드리고 싶을 때, documentElement = html
+        document.documentElement.addEventListener("click", loginCheck, { capture: true })
+    </script>
+</head>
+<body>
+    <div id="html_img" class="box" onclick="upscale()">
+        <button onclick="like(event)">좋아요</button>
+    </div>
+    <p>사진을 클릭하면 전체화면으로 볼 수 있어요.</p>
+</body>
+</html>

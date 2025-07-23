@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>이벤트버블링 전파중단 실습</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        const upscale = () => {
+            document.getElementById("html_img").style = "width: 100vw; height: 100vw;"
+        }
+
+        const like = (event) => {
+            // event.preventDefault() <- 기본 기능을 막음
+            event.stopPropagation() // 기본 기능이 아닌 함수(클릭 등)을 막음
+            alert("좋아요가 +1 올랐습니다.")
+        }
+    </script>
+</head>
+<body>
+    <div id="html_img" class="box" onclick="upscale()">
+        <button onclick="like(event)">좋아요</button>
+    </div>
+    <p>사진을 클릭하면 전체화면으로 볼 수 있어요.</p>
+</body>
+</html>
