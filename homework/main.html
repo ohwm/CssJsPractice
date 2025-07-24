@@ -20,8 +20,8 @@
             <div class="nav_unselected">사진보관함</div>
         </div>
 
-        <div class="container_findAndPlus">
-            <div class="filters">
+        <div id="nav_bar" class="container_findAndPlus">
+            <div id="filters" class="filters">
                 <select name="emotion" id="emotion_filter" onchange="filteringDiary(event)">
                     <option value="all">전체</option>
                     <option value="happy">행복해요</option>
@@ -34,7 +34,7 @@
             <button>일기쓰기</button>
         </div>
 
-        <div class="container_table">
+        <div id="container_table" class="container_table">
             <div id="table_items">
                 <!-- 아이템 추가되는 곳 -->
             </div>
@@ -69,7 +69,9 @@
         </div>
     </div>
 
-    
+    <button id="floating_button" class="floating_button" onclick="floating_clicked()">
+        <img src="./assets/img/lightmode_icon/up_outline_light_xl.svg" alt="" />
+    </button>
 
     <div class="footer">
         <div class="footer_container">

@@ -4,6 +4,16 @@ window.onload = () => {
     loadDiary(diary)
 }
 
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 0) {
+        document.getElementById("emotion_filter").style = "background-color: black; color: white;"
+    } else {
+        document.getElementById("emotion_filter").style = "background-color: white; color: black;"
+    }
+})
+
+
 const uploadDiary = () => {
     const diaryLocal = JSON.parse(localStorage.getItem("diaryArray"))
     const diaryLiberary = diaryLocal === null ? [] : diaryLocal
@@ -94,4 +104,8 @@ const loadDiary = (diary) => {
 
     if(diary !== null)
         document.getElementById("table_items").innerHTML = diaryTag.join("")
+}
+
+const floating_clicked = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
 }
