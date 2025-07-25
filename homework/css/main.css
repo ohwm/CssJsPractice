@@ -107,6 +107,21 @@ a {
     filter: blur(5px);
 }
 
+.diary_close_btn {
+    border: none;
+    background-color: transparent;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+    top: -350px;
+    left: 350px;
+}
+
+.diary_close_btn img {
+    width: 24px;
+}
+
 .diary_down {
     padding: 8px;
 }

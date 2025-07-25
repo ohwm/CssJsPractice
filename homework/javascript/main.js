@@ -86,7 +86,7 @@ const filteringDiary = (event) => {
 
 const loadDiary = (diary) => {
     console.log(diary)
-    // map과 join에서 오류가 생김
+
     const diaryTag = diary !== null ? diary.map((el) => `
         <a href="./detail.html?number=${el.diaryCnt}">
             <div class="diary_container">
@@ -99,11 +99,19 @@ const loadDiary = (diary) => {
                     <div class="diary_title">${el.title}</div>
                 </div>
             </div>
-        <a />
+            <button class="diary_close_btn" onclick="delete_diary(event)">
+                <img src="./assets/img/lightmode_icon/close_outline_light_m.svg" />
+            </button>
+        </a>
     `) : null;
 
     if(diary !== null)
         document.getElementById("table_items").innerHTML = diaryTag.join("")
+}
+
+const delete_diary = (event) => {
+    event.preventDefault();
+    alert("안녕하세요.")
 }
 
 const floating_clicked = () => {
