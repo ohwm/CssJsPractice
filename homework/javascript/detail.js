@@ -149,7 +149,7 @@ const getDiary = () => {
     </div>
     <div class="diary_buttons">
         <button class="diary_modify" onclick="modifyDiary()">수정</button>
-        <button class="diary_back">삭제</button>
+        <button class="diary_back" onclick="deleteDiary()">삭제</button>
     </div>
     <div class="diary_chat_container">
         <div class="chat_container_title">회고</div>
@@ -162,4 +162,21 @@ const getDiary = () => {
         ${diaryChatting.join().replace(/,/g,'')}
     <div/>
     `
+}
+
+const deleteDiary = () => {
+    const queryString = location.search
+    const queryBox = new URLSearchParams(queryString)
+    const diaryNum = queryBox.get("number")
+    const diaryArray = JSON.parse(localStorage.getItem("diaryArray"));
+    diaryArray.splice(diaryNum, 1)
+
+    diaryArray.map((el, index) => {
+        el.diaryCnt = index;
+    })
+
+    localStorage.setItem("diaryArray", JSON.stringify(diaryArray));
+
+    location.href = "main.html"
+    alert("일기가 삭제되었습니다.")
 }
