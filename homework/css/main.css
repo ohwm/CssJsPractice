@@ -91,6 +91,13 @@ a {
     gap: 24px;
 }
 
+.diary_atag:hover {
+    transform: scale(1.1);
+    .diary_container {
+        filter: blur(5px);
+    }
+}
+
 .diary_container {
     max-width: 380px;
     display: flex;
@@ -100,11 +107,6 @@ a {
     transition: 
         transform 0.5s,
         filter 0.5s;
-}
-
-.diary_container:hover {
-    transform: scale(1.1);
-    filter: blur(5px);
 }
 
 .diary_close_btn {
@@ -205,7 +207,7 @@ a {
 
 /* 푸터는 어떻게 설정하는지 더 공부해보자 */
 .footer {
-    background-color: #F2F2F2;
+    background-color: #dbdbdb;
     width: 100%;
     display: flex;
     justify-content: left;

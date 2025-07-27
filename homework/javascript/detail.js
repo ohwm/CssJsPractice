@@ -92,12 +92,46 @@ const modifyDiaryConfirm = () => {
     getDiary()
 }
 
+const uploadChat = () => {
+    const chat_content = document.getElementById("chat_content").value
+
+    const today = new Date();
+
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1
+    const day = String(today.getDate()).padStart(2, '0');
+
+    const formattedDate = `${year}. ${month}. ${day}`;
+
+    const queryString = location.search
+    const queryBox = new URLSearchParams(queryString)
+    const diaryNum = queryBox.get("number")
+    const diary = JSON.parse(localStorage.getItem("diaryArray"));
+
+    const diaryChatContent = {
+        content: chat_content,
+        date: formattedDate
+    }
+
+    diary[diaryNum].diaryChat.push(diaryChatContent)
+    localStorage.setItem("diaryArray", JSON.stringify(diary))
+    getDiary()
+}
+
 const getDiary = () => {
     const queryString = location.search
     const queryBox = new URLSearchParams(queryString)
     const diaryNum = queryBox.get("number")
-
     const diary = JSON.parse(localStorage.getItem("diaryArray"))[diaryNum];
+
+    const diaryChatting = diary.diaryChat !== null ? diary.diaryChat.map((el) => `
+        <div class="chat_box">
+            <div class="chat_box_content">${el.content}</div>
+            <div class="chat_date">[${el.date}]</div>
+        </div>
+    `) : null;
+    console.log(diaryChatting.join(","))
+
     document.getElementById("container_diary").innerHTML = `
     <div class="diary_title">
         <h1>${diary.title}</h1>
@@ -114,8 +148,18 @@ const getDiary = () => {
         <div class="contents_read">${diary.contents}</div>
     </div>
     <div class="diary_buttons">
-         <a href="./main.html"><button class="diary_back">뒤로가기</button><a />
-        <button class="diary_modify" onclick="modifyDiary()">수정하기</button>
+        <button class="diary_modify" onclick="modifyDiary()">수정</button>
+        <button class="diary_back">삭제</button>
     </div>
+    <div class="diary_chat_container">
+        <div class="chat_container_title">회고</div>
+        <div class="chat_container_input">
+            <input id="chat_content" type="text" class="input_box" placeholder="회고를 남겨보세요."/>
+            <button class="input_button" onclick="uploadChat()">입력</button>
+        </div>
+    </div>
+    <div class="chat_list">
+        ${diaryChatting.join().replace(/,/g,'')}
+    <div/>
     `
 }

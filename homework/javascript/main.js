@@ -69,6 +69,7 @@ const uploadDiary = () => {
         emotionName,
         emotionFontColor,
         diaryCnt,
+        diaryChat : []
     }
     diaryLiberary.push(diary)
     localStorage.setItem("diaryArray", JSON.stringify(diaryLiberary));
@@ -88,7 +89,7 @@ const loadDiary = (diary) => {
     console.log(diary)
 
     const diaryTag = diary !== null ? diary.map((el) => `
-        <a href="./detail.html?number=${el.diaryCnt}">
+        <a href="./detail.html?number=${el.diaryCnt}" class="diary_atag">
             <div class="diary_container">
                 <img src="./assets/img/emotion/${el.emotion}.png" alt="">
                 <div class="diary_down">
@@ -99,7 +100,7 @@ const loadDiary = (diary) => {
                     <div class="diary_title">${el.title}</div>
                 </div>
             </div>
-            <button class="diary_close_btn" onclick="delete_diary(event)">
+            <button class="diary_close_btn" onclick="delete_diary(event, ${el.diaryCnt})">
                 <img src="./assets/img/lightmode_icon/close_outline_light_m.svg" />
             </button>
         </a>
@@ -109,9 +110,20 @@ const loadDiary = (diary) => {
         document.getElementById("table_items").innerHTML = diaryTag.join("")
 }
 
-const delete_diary = (event) => {
+const delete_diary = (event, number) => {
     event.preventDefault();
-    alert("안녕하세요.")
+    const diaryArray = JSON.parse(localStorage.getItem("diaryArray"));
+    diaryArray.splice(number, 1)
+
+    diaryArray.map((el, index) => {
+        el.diaryCnt = index;
+    })
+
+    localStorage.setItem("diaryArray", JSON.stringify(diaryArray));
+
+    loadDiary(diaryArray)
+
+    alert("일기가 삭제되었습니다.")
 }
 
 const floating_clicked = () => {
