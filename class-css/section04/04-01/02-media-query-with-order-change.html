@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>미디어쿼리와 순서 변경 실습</title>
+    <style>
+        .box {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .css_img_group {
+            background-color: skyblue;
+            padding: 50px;
+        }
+        .css_img {
+            width: 150px;
+            height: 150px;
+        }
+
+        .css_input_group {
+            width: 300px;
+            background-color: yellow;
+        }
+
+        @media (max-width: 767px) {
+            .box {
+                flex-direction: column;
+            }
+
+            .css_img_group {
+                order: 2
+            }
+
+            .css_input_group {
+                order: 1
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="css_img_group">
+            <img class="css_img" src="./00-image.jpg" alt="" />
+            <img class="css_img" src="./00-image.jpg" alt="" />
+            <img class="css_img" src="./00-image.jpg" alt="" />
+            <img class="css_img" src="./00-image.jpg" alt="" />
+        </div>
+        <div class="css_input_group">
+            <h1>강아지 옷 입력하기</h1>
+            옷이름 : <input type="text" />
+            <button>등록하기</button>
+        </div>
+    </div>
+</body>
+</html>
