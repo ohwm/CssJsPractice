@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>그리드와 플렉스 조합 실습</title>
+    <style>
+        .box {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1100px;
+            background-color: skyblue;
+            padding: 50px;
+            gap: 10px;
+        }
+
+        img {
+            width: 250px;
+        }
+
+        @media (max-width: 650px) {
+            .box {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            img {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="../04-01/00-image.jpg" alt="" />
+        <img src="../04-01/00-image.jpg" alt="" />
+        <img src="../04-01/00-image.jpg" alt="" />
+        <img src="../04-01/00-image.jpg" alt="" />
+        <img src="../04-01/00-image.jpg" alt="" />
+        <img src="../04-01/00-image.jpg" alt="" />
+        <img src="../04-01/00-image.jpg" alt="" />
+        <img src="../04-01/00-image.jpg" alt="" />
+    </div>
+</body>
+</html>

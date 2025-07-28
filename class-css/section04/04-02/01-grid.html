@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>그리드 실습</title>
+    <style>
+        .box {
+            width: 1600px;
+            height: 1600px;
+            background-color: skyblue;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; /* 1:1:1 비율로 만들기*/
+            grid-template-columns: 300px 300px 300px;
+            grid-template-rows: 400px 400px 400px;
+
+            column-gap: 100px;
+            row-gap: 50px;
+
+            place-items: center center; /* 상자 아이템 각각 정렬 (상하 좌우)*/
+            place-content: end center; /* 상자 껍대기 전체 정렬 (상하 좌우)*/
+        }
+
+        img {
+            border: 5px solid black;
+            width: 250px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="../04-01/00-image.jpg" alt="" />
+        <img src="../04-01/00-image.jpg" alt="" />
+        <img src="../04-01/00-image.jpg" alt="" />
+        <img src="../04-01/00-image.jpg" alt="" />
+        <img src="../04-01/00-image.jpg" alt="" />
+        <img src="../04-01/00-image.jpg" alt="" />
+        <img src="../04-01/00-image.jpg" alt="" />
+        <img src="../04-01/00-image.jpg" alt="" />
+    </div>
+</body>
+</html>
