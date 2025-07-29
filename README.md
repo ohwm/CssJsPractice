@@ -1,3 +1,4 @@
-# Css-Js-Study
+# CSS JS STUDY
 
-더 세부적인 css와 js 공부
+
+[1] 전날 공부한 내용 10분 리뷰하기!
