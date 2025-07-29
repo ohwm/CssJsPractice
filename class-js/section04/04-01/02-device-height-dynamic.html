@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>디바이스 높이 감지 실습</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        .footer {
+            height: 100px;
+            background-color: lightgray;
+        }
+
+        .floating_button {
+            position: fixed;
+            bottom: 10px;
+            left: 90%;
+        }
+    </style>
+
+    <script>
+        window.addEventListener("scroll", () => {
+            // 현재 보이는 화면 위에서부터 푸터까지의 거리
+            const topToFooter = document.getElementById("footer").getBoundingClientRect().top
+
+            // 현재 보이는 화면의 높이
+            const viewHeight = window.innerHeight
+
+            if (viewHeight >= topToFooter) {
+                document.getElementById("floating_button").style = `
+                    position: relative;
+                    bottom: 40px;
+                    left: 90%;
+                `
+            } else {
+                document.getElementById("floating_button").style = `
+                    position: fixed;
+                    bottom: 10px;
+                    left: 90%;
+                `
+            }
+        })
+    </script>
+</head>
+<body>
+    <img src="./00-image.jpg" alt="" width="100%"/>
+    <button id="floating_button" class="floating_button"> ^ </button>
+    <div id="footer" class="footer"></div>
+</body>
+</html>
