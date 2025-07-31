@@ -16,28 +16,28 @@ a {
 }
 
 .container {
-    margin: 0 20px 40px;
-    width: 1168px;
+    margin: 0 1.25rem 2.5rem;
+    width: 73rem;
 }
 
 .container_header {
     width: 100%;
-    height: 60px;
+    height: 3.75rem;
     font-size: 18px;
     line-height: 16px;
     letter-spacing: -1px;
     font-weight: 700;
-    padding: 20px;
+    padding: 1.25rem;
 }
 
 .container_banner {
     width: 100%;
-    padding: 24px 0;
+    padding: 1.5rem 0;
 }
 
 .container_nav {
     width: 100%;
-    gap: 16px;
+    gap: 1rem;
     display: flex;
 }
 
@@ -46,8 +46,8 @@ a {
     font-weight: 700;
     line-height: 24px;
     letter-spacing: -1px;
-    height: 50px;
-    padding: 12px 8px;
+    height: 3.125rem;
+    padding: 0.75rem 0.5rem;
     border-bottom: 2px solid black;
 } 
 
@@ -57,38 +57,38 @@ a {
     font-weight: 500;
     line-height: 24px;
     letter-spacing: -1px;
-    height: 50px;
-    padding: 12px;
+    height: 3.125rem;
+    padding: 0.75rem;
 }
 
 .container_findAndPlus {
     position: sticky;
     top: 0px;
     backdrop-filter: blur(5px);
-    margin-top: 32px;
+    margin-top: 2rem;
     width: 100%;
-    gap: 16px;
+    gap: 1rem;
     display: flex;
     justify-content: space-between;
 }
 
 #emotion_filter {
-    width: 120px;
-    height: 48px;
+    width: 7.5rem;
+    height: 3rem;
     border: 1px solid #C7C7C7;
-    border-radius: 10px;
-    padding: 10px 12px;
+    border-radius: 0.625rem;
+    padding: 0.625rem 0.75rem;
 }
 
 .container_table {
-    margin-top: 40px;
+    margin-top: 2.5rem;
     display: flex;
 }
 
 #table_items {
     display: flex;
     flex-wrap: wrap;
-    gap: 24px;
+    gap: 1.5rem;
 }
 
 .diary_atag:hover {
@@ -99,10 +99,10 @@ a {
 }
 
 .diary_container {
-    max-width: 380px;
+    max-width: 23.75rem;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0.5rem;
 
     transition: 
         transform 0.5s,
@@ -112,20 +112,20 @@ a {
 .diary_close_btn {
     border: none;
     background-color: transparent;
-    width: 24px;
-    height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
     position: relative;
     cursor: pointer;
-    top: -350px;
-    left: 350px;
+    top: -21.875rem;
+    left: 21.875rem;
 }
 
 .diary_close_btn img {
-    width: 24px;
+    width: 1.5rem;
 }
 
 .diary_down {
-    padding: 8px;
+    padding: 0.5rem;
 }
 
 .diary_container img {
@@ -162,16 +162,16 @@ a {
 }
 
 .table_plus {
-    margin-left: 24px;
+    margin-left: 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 280px;
-    height: 400px;
+    width: 17.5rem;
+    height: 25rem;
     border: 2px solid black;
     border-radius: 15px;
-    padding: 24px;
+    padding: 1.5rem;
 }
 
 .plus_name {
@@ -197,12 +197,12 @@ a {
     border: none;
     background-color:transparent; 
     position: fixed;
-    bottom: 40px;
-    right: 40px;
+    bottom: 2.5rem;
+    right: 2.5rem;
 }
 
 .floating_button img {
-    width: 40px;
+    width: 2.5rem;
 }
 
 /* 푸터는 어떻게 설정하는지 더 공부해보자 */
@@ -212,14 +212,14 @@ a {
     display: flex;
     justify-content: left;
     align-items: center;
-    padding: 24px;
+    padding: 1.5rem;
 }
 
 .footer_container {
     min-width: 1168px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 1rem;
 }
 
 .footer_title {
