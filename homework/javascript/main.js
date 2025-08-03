@@ -11,6 +11,26 @@ window.addEventListener("scroll", () => {
     } else {
         document.getElementById("emotion_filter").style = "background-color: white; color: black;"
     }
+
+    const footer = document.getElementById("footer")
+    const floatingBtn = document.getElementById("floating_button")
+
+    const footerRect = footer.getBoundingClientRect();
+    const btnHeight = floatingBtn.offsetHeight;
+    const gap = 0; // 버튼과 푸터 사이 간격 여유
+
+    const overlap = (window.innerHeight - footerRect.top);
+
+    floatingBtn.style.position = "fixed";
+    floatingBtn.style.right = "2.5rem";
+
+    if (overlap > 0) {
+        // 푸터와 겹칠 경우: 겹치는 만큼 위로 띄움
+        floatingBtn.style.bottom = `${2.5 + (overlap + gap) / 16}rem`;
+    } else {
+        // 기본 위치
+        floatingBtn.style.bottom = "2.5rem";
+    }
 })
 
 
