@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>z-index 실습</title>
+    <style>
+        /* z-index의 숫자가 높으면 더 위에 위치하게 됨*/
+
+        .red {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        .yellow {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            z-index: 3;
+        }
+
+        .blue {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="red"></div>
+    <div class="yellow"></div>
+    <div class="blue"></div>
+</body>
+</html>

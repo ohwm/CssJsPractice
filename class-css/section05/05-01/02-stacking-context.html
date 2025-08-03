@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>쌓임맥락 실습</title>
+    <style>
+        /* 
+        포지션이 있는 애들끼리 쌓임맥락을 형성
+        포지션이 다르면 인덱스를 올려도 적용되지 않음
+        */
+
+        .red {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+
+            /* 이것만 있으면 위로 올라가지 않음 */
+            z-index: 5;
+
+            /* 포지션을 주어 쌓임맥락에 포함시키기 */
+            position: absolute;
+        }
+
+        .yellow {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            z-index: 3;
+        }
+
+        .blue {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="red"></div>
+    <div class="yellow"></div>
+    <div class="blue"></div>
+</body>
+</html>

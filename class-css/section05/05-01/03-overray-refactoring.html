@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <style>
+        /* 리팩토링이란? 같은 기능 but, 더 좋은 코드로 바꾸는 것 */
+
+        .img_group {
+            margin: 50px;
+            position: relative; /* 부모도 쌓임맥락을 형성하지 않으면? 삭제버튼의 absolute는 html의 0,0을 부모로 지정 */
+        }
+
+        .img {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+
+        .delete {
+            /* 겹치기할 때, absolute(아래 애들 재배치) relative(아래 애들 그대로 두기) */
+            position: absolute;
+            top: 0px;
+            left: 175px;
+        }
+
+        .img_content {
+            width: 200px;
+            height: 100px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="img_group">
+        <div class="img"></div>
+        <button class="delete">X</button>
+        <div class="img_content">
+            이 이미지는 강아지 이미지입니다.
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>쌓임맥락 실습</title>
+    <style>
+        /* 동일한 쌓임맥락을 형성한 블록이 부모가 된다 */
+
+        .floor {
+            width: 1000px;
+            height: 1000px;
+            background-color: lightgray;
+
+            margin: 100px;
+            padding: 100px;
+            
+            /* 부모의 재정의 */
+            /* 부모(컨테이닝 블록)는 자식을 감싸는 태그 => 기존 내용 */
+            /* 단, 쌓임맥락을 형성한 태그들은 쌓임맥락 안에서 새롭게 부모와 자식을 재정의 */
+            position: absolute;
+        }
+
+        .group {
+            width: 500px;
+            height: 500px;
+            background-color: skyblue;
+        }
+
+        .red {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+
+            /* 이것만 있으면 위로 올라가지 않음 */
+            z-index: 5;
+
+            /* 포지션을 주어 쌓임맥락에 포함시키기 */
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+        .yellow {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            z-index: 3;
+        }
+
+        .blue {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="floor">
+        <div class="group">
+            <div class="red"></div>
+            <div class="yellow"></div>
+            <div class="blue"></div>
+        </div>
+    </div>
+    
+</body>
+</html>
