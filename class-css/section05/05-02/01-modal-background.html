@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>모달 실습</title>
+    <style>
+        .modal_background {
+            display: none;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100vw;
+            height: 100vh;
+            background-color: lightgray;
+
+            opacity: 50%;
+        }
+    </style>
+    <script>
+        const modalOpen = () => {
+            document.getElementById("modal").style.display = "block"
+        }
+    </script>
+</head>
+<body>
+    <button onclick="modalOpen()">모달열기</button>
+
+    <!-- 모달 div -->
+    <div id="modal" class="modal_background"></div>
+</body>
+</html>

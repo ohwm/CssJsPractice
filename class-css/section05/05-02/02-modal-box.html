@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>모달 실습</title>
+    <style>
+        .modal_group {
+            display: none;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .modal_background {
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+            opacity: 40%;
+        }
+
+        .modal {
+            position: absolute;
+            top: calc(50% - 250px);
+            left: calc(50% - 200px);
+            width: 400px;
+            height: 500px;
+            background-color: skyblue;
+        }
+    </style>
+    <script>
+        const openModal = () => {
+            document.getElementById("modal_group").style.display = "block"
+        }
+
+        const closeModal = () => {
+            document.getElementById("modal_group").style.display = "none"
+        }
+    </script>
+</head>
+<body>
+    <button onclick="openModal()">모달 열기</button>
+
+    <div id="modal_group" class="modal_group">
+        <div onclick="closeModal()" class="modal_background"></div>
+        <div class="modal"></div>
+    </div>
+</body>
+</html>

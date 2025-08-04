@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>모달 실습</title>
+    <style>
+        .modal_group {
+            display: none;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .modal_background {
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+            opacity: 40%;
+        }
+
+        .modal_in {
+            position: absolute;
+            top: calc(50% - 250px);
+            left: calc(50% - 200px);
+            width: 400px;
+            height: 500px;
+            background-color: skyblue;
+        }
+
+        .modal_end {
+            position: absolute;
+            top: calc(50% - 150px / 2);
+            left: calc(50% - 600px / 2);
+            width: 600px;
+            height: 150px;
+            background-color: yellow;
+        }
+    </style>
+    <script>
+        const openModal = (modalId) => {
+            document.getElementById(modalId).style.display = "block"
+        }
+
+        const closeModal = (modalId) => {
+            document.getElementById(modalId).style.display = "none"
+        }
+    </script>
+</head>
+<body>
+    <button onclick="openModal('modal_signin')">모달 열기</button>
+
+    <!-- 등록모달 -->
+    <div id="modal_signin" class="modal_group">
+        <div onclick="closeModal('modal_signin')" class="modal_background"></div>
+        <div class="modal_in">
+            <div>
+                제목 : <input type="text"/>
+            </div>
+            <div>
+                내용 : <textarea></textarea>
+            </div>
+            <div>
+                <button onclick="openModal('modal_signend')">등록하기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 등록완료모달 -->
+    <div id="modal_signend" class="modal_group">
+        <div onclick="closeModal('modal_signend')" class="modal_background"></div>
+        <div class="modal_end">
+            <p>등록이 완료되었습니다.</p>
+        </div>
+    </div>
+</body>
+</html>
