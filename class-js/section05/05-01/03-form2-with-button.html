@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>폼 실습</title>
+    <script>
+        const diary = () => {
+            alert("글 등록이 완료되었습니다.")
+        }
+
+        const like = () => {
+            alert("좋아요가 +1 올랐습니다.")
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="diary()" action="">
+        제목 : <input type="text" /> <br/>
+        내용 : <input type="text" /> <br/>
+
+        <button type="submit">등록하기</button>
+        <button type="reset">모두지우기</button>
+        <button type="button">좋아요</button>
+
+        <button>등록하기(디폴트는 submit)</button>
+    </form>
+</body>
+</html>

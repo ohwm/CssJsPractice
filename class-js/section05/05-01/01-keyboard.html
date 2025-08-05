@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>키보드 감지 실습</title>
+    <style>
+        .dog {
+            width: 100px;
+            height: 100px;
+
+            position: absolute;
+            top: 300px;
+            left: 400px;
+        }
+    </style>
+    <script>
+        let booster = 1.0
+
+        window.addEventListener("keydown", (event) => {
+            const dog = document.getElementById("dog")
+            const dogStyle = getComputedStyle(dog)
+            const dogY = Number(dogStyle.top.replace("px", ""))
+            const dogX = Number(dogStyle.left.replace("px", ""))
+
+            // event.key code는 구글링 해보자.
+            switch (event.key) {
+                case "ArrowUp" : {
+                    // 강아지 위로 -20 옮기기
+                    document.getElementById("dog").style = `top: ${(dogY - 20) / booster}px; left: ${dogX}px`
+                    break
+                }
+                case "ArrowDown" : {
+                    // 강아지 아래로 +20 옮기기
+                    document.getElementById("dog").style = `top: ${(dogY + 20) * booster}px; left: ${dogX}px`
+                    break
+                }
+                case "ArrowLeft" : {
+                    // 강아지 왼쪽으로 -20 옮기기
+                    document.getElementById("dog").style = `top: ${dogY}px; left: ${(dogX - 20) / booster}px`
+                    break
+                }
+                case "ArrowRight" : {
+                    // 강아지 오른쪽으로 +20 옮기기
+                    document.getElementById("dog").style = `top: ${dogY}px; left: ${(dogX + 20) * booster}px`
+                    break
+                }
+                case " " : {
+                    // 강아지 속도 +0.1 올리기
+                    booster += 0.1
+                    break
+                }
+            }
+        })
+    </script>
+</head>
+<body>
+    <img src="./00-image.jpg" alt="" class="dog" id="dog"/>
+</body>
+</html>

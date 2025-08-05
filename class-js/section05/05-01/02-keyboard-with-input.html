@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>키보드와 입력창 연습</title>
+    <script>
+        const diary = () => {
+            alert("게시글 등록이 완료되었습니다.")
+        }
+
+        window.addEventListener("keydown", () => {
+            if (event.key === "Enter") {
+                if(document.activeElement.id === "title" || document.activeElement.id === "content")
+                diary()
+            }
+        })
+    </script>
+</head>
+<body>
+    제목 : <input id="title" type="text"/> <br/>
+    내용 : <input id="content" type="text"/> <br/>
+    <button onclick="diary()">등록하기</button>
+</body>
+</html>
