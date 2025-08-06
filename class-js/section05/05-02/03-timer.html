@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>타이머 실습</title>
+    <style>
+        html {
+            cursor: none;
+        }
+
+        .mouse {
+            position: absolute;
+            z-index: 999;
+        }
+
+        .dog1 {
+            position: absolute;
+            top: 100px;
+            left: 100px;
+        }
+
+        .dog2 {
+            position: absolute;
+            top: 500px;
+            left: 300px;
+        }
+    </style>
+    <script>
+        addEventListener("mousemove", (event) => {
+            const mouse = document.getElementById("myMouse")
+            mouse.style.top = `${event.clientY + 2}px` // 마우스 클릭 시 바로 아래의 망치 이미지 클릭되는 버그 수정
+            mouse.style.left = `${event.clientX + 2}px`
+        })
+
+        const catchDog = (id) => {
+            document.getElementById(id).style = "display : none"
+
+            setTimeout(() => {
+                document.getElementById(id).style = "diaplay: block"
+            }, 2000)
+
+            // setInterval <= 시간마다 반복하기
+        }
+    </script>
+</head>
+<body>
+    <img id="myMouse" src="./image.png" class="mouse" width="50px"/>
+    <img id="dog1" onclick="catchDog('dog1')" src="./00-image.jpg" class="dog1" width="100px"/>
+    <img id="dog2" onclick="catchDog('dog2')" src="./00-image.jpg" class="dog2" width="100px"/>
+</body>
+</html>

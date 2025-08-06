@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>내 위치 실습</title>
+    <script>
+        const restaurant = [
+            { 
+                이름: "철수네삼겹살",
+                위도: 37.700968,
+                경도: 126.917052
+            },
+            { 
+                이름: "영희네초밥",
+                위도: 37.304554,
+                경도: 126.621309
+            }
+        ]
+
+        const sexyFood = () => {
+            navigator.geolocation.getCurrentPosition((myPosition) => {
+                const 내위도 = myPosition.coords.latitude
+                const 내경도 = myPosition.coords.longitude
+
+                alert(`당신의 위치는 ${내위도}, ${내경도} 이군요!`)
+
+                restaurant.forEach(el => {
+                    const 위도가까운지 = Math.abs(내위도 - el.위도) <= 0.5 ? true : false
+                    const 경도가까운지 = Math.abs(내경도 - el.경도) <= 0.5 ? true : false
+                    if (위도가까운지 && 경도가까운지) {
+                        alert(`${el.이름}이 있어요!`)
+                    }
+                });
+            })
+        }
+    </script>
+</head>
+<body>
+    <button onclick="sexyFood()">내 근처 맛집보기</button>
+</body>
+</html>

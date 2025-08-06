@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>클립보드 실습</title>
+    <script>
+        const copy = () => {
+            const text = document.getElementById("content").innerText
+            navigator.clipboard.writeText(text)
+            alert("복사되었습니다.")
+        }
+
+        const copyPlus = () => {
+            const text = document.getElementById("content").innerText
+            navigator.clipboard.writeText(`[명후의 다이어리] : ${text}`)
+            alert("복사되었습니다.")
+        }
+    </script>
+</head>
+<body>
+    <div id="content">안녕하세요. 명후는 22살이고 육군에 복무 중입니다.</div>
+    <button onclick="copy()">내용 복사하기</button>
+    <button onclick="copyPlus()">꾸며서 복사하기</button>
+</body>
+</html>
