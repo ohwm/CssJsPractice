@@ -52,6 +52,12 @@ const uploadDiary = () => {
     const title = document.getElementById("title_value").value
     const contents = document.getElementById("contents_value").value
     const emotion = document.querySelector('input[name="emoge"]:checked').value;
+
+    if (title === "" || contents === "" || emotion === null){
+        alert("제목, 내용을 작성해주세요.")
+        return;
+    }
+
     let emotionName
     let emotionFontColor
     switch (emotion) {
@@ -93,7 +99,7 @@ const uploadDiary = () => {
     }
     diaryLiberary.push(diary)
     localStorage.setItem("diaryArray", JSON.stringify(diaryLiberary));
-
+    openDiaryDone()
     loadDiary(diaryLiberary)
 }
 
@@ -128,6 +134,38 @@ const loadDiary = (diary) => {
 
     if(diary !== null)
         document.getElementById("table_items").innerHTML = diaryTag.join("")
+}
+
+const openDiaryWrite = () => {
+    document.body.style.overflow = "hidden"
+    window.scrollTo({ top: 0})
+    document.getElementById("modal_diaryplus").style.display = "block"
+}
+
+const closeModalDiaryPlus = () => {
+    document.body.style.overflow = "auto"
+    document.getElementById("modal_diaryplus").style.display = "none"
+}
+
+const openDiaryDone = () => {
+    document.getElementById("modal_diaryDone").style.display = "block"
+}
+
+const openDiaryStop = () => {
+    document.getElementById("modal_diaryStop").style.display = "block"
+}
+
+const closeDiaryStop = () => {
+    document.getElementById("modal_diaryStop").style.display = "none"
+}
+
+const closeAll = () => {
+    document.body.style.overflow = "auto"
+    document.getElementById("modal_diaryplus").style.display = "none"
+    document.getElementById("modal_diaryDone").style.display = "none"
+    document.getElementById("modal_diaryStop").style.display = "none"
+    document.getElementById("title_value").value = ""
+    document.getElementById("contents_value").value = ""
 }
 
 const delete_diary = (event, number) => {

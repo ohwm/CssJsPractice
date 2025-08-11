@@ -31,40 +31,69 @@
                     <option value="extra">기타</option>
                 </select>
             </div>
-            <button>일기쓰기</button>
+            <button class="nav_diaryBtn" onclick="openDiaryWrite()">
+                <img src="./assets/img/plus.png" alt="">
+                일기쓰기
+            </button>
         </div>
 
         <div id="container_table" class="container_table">
             <div id="table_items">
                 <!-- 아이템 추가되는 곳 -->
             </div>
-            <div class="table_plus">
-                <div class="plus_name">일기쓰기</div>
-                <div class="plus_writing">
-                    <div class="writing_emotion">
-                        <div class="emotion_title">오늘 기분은 어땠나요?</div>
-                        <div class="emotion_choose">
-                            <label><input value="happy" name="emoge" type="radio">행복해요</label>
-                            <label><input value="sad" name="emoge" type="radio">슬퍼요</label>
-                            <label><input value="suprised" name="emoge" type="radio">놀랐어요</label>
-                            <label><input value="angry" name="emoge" type="radio">화나요</label>
-                            <label><input value="extra" name="emoge" type="radio">기타</label>
-                        </div>
-                    </div>
-                    <div class="writing_diary">
-                        <div class="writing_title">
-                            <div>제목</div>
-                            <input id="title_value" type="text" placeholder="제목을 입력합니다.">
-                        </div>
-                        <div class="writing_contents">
-                            <div>내용</div>
-                            <input id="contents_value" type="text" placeholder="내용을 입력합니다.">
-                        </div>
+        </div>
+    </div>
+
+    <div id="modal_diaryplus" class="modal_diaryplus">
+        <div onclick="closeModalDiaryPlus()" class="modal_background"></div>
+        <div class="table_plus" id="table_plus">
+            <div class="plus_name">일기쓰기</div>
+            <div class="plus_writing">
+                <div class="writing_emotion">
+                    <div class="emotion_title">오늘 기분은 어땠나요?</div>
+                    <div class="emotion_choose">
+                        <label><input value="happy" name="emoge" type="radio">행복해요</label>
+                        <label><input value="sad" name="emoge" type="radio">슬퍼요</label>
+                        <label><input value="suprised" name="emoge" type="radio">놀랐어요</label>
+                        <label><input value="angry" name="emoge" type="radio">화나요</label>
+                        <label><input value="extra" name="emoge" type="radio">기타</label>
                     </div>
                 </div>
-                <div class="plus_buttons">
-                    <button onclick="uploadDiary()">등록하기</button>
+                <div class="writing_diary">
+                    <div class="writing_title">
+                        <div class="writing_wpahr">제목</div>
+                        <input class="inputinput" id="title_value" type="text" placeholder="제목을 입력합니다.">
+                    </div>
+                    <div class="writing_contents">
+                        <div class="writing_wpahr">내용</div>
+                        <input class="inputinput" id="contents_value" type="text" placeholder="내용을 입력합니다.">
+                    </div>
                 </div>
+            </div>
+            <div class="plus_buttons">
+                <button class="button_quit" onclick="openDiaryStop()">닫기</button>
+                <button class="button_write" onclick="uploadDiary()">등록하기</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal_diaryDone" id="modal_diaryDone">
+        <div class="modal_background"></div>
+        <div class="modal_small">
+            <div class="done_title">일기 등록 완료</div>
+            <div class="done_content">등록이 완료 되었습니다.</div>
+            <button class="done_btn" onclick="closeAll()">확인</button>
+        </div>
+    </div>
+    
+    <div class="modal_diaryStop" id="modal_diaryStop">
+        <div class="modal_background"></div>
+        <div class="modal_small">
+            <div class="done_title">일기 등록 취소</div>
+            <div class="done_content">일기 등록을 취소 하시겠어요?</div>
+            <div class="plus_buttons">
+                <button class="button_quit" onclick="closeDiaryStop()">계속 작성</button>
+                <button class="button_write" onclick="closeAll()">등록 취소</button>
             </div>
         </div>
     </div>
