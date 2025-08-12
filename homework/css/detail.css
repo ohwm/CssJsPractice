@@ -92,6 +92,27 @@ body {
     letter-spacing: -1px;
 }
 
+.diary_copy {
+    margin-top: 12px;
+    margin-bottom: 24px;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 8px;
+}
+
+.diary_copy:hover {
+    cursor: pointer;
+}
+
+.copy_title {
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 24px;
+    letter-spacing: -1px;
+}
+
 .diary_buttons {
     width: 100%;
     display: flex;
@@ -100,10 +121,10 @@ body {
 }
 
 .diary_back {
-    width: 5rem;
+    width: 4rem;
     height: 3rem;
     border-radius: 0.625rem;
-    border: 1px solid black;
+    border: 1px solid #D4D3D3;
     color: black;
     background-color: white;
     font-size: 15px;
@@ -113,10 +134,10 @@ body {
 }
 
 .diary_modify {
-    width: 5rem;
+    width: 4rem;
     height: 3rem;
     border-radius: 0.625rem;
-    border: 1px solid black;
+    border: 1px solid #D4D3D3;
     color: black;
     background-color: white;
     font-size: 15px;
@@ -262,4 +283,41 @@ body {
     border: 1px solid #D4D3D3;
     border-radius: 10px;
     padding: 0.75rem 1rem;
+}
+
+.toast_copy {
+    display: none;
+    background-color: black;
+    width: 500px;
+    height: 60px;
+    border: 1px solid black;
+    border-radius: 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    animation-name: myanimation;
+    animation-duration: 2s;
+
+    position: absolute;
+    bottom: 10px;
+    left: 50% - 250px;
+}
+
+.copy_content {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 24px;
+    color: white;
+}
+
+@keyframes myanimation {
+    from {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }

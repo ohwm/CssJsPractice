@@ -147,21 +147,34 @@ const getDiary = () => {
         <h1>내용</h1>
         <div class="contents_read">${diary.contents}</div>
     </div>
+    <div class="diary_copy" onclick="copyDiary('${diary.contents}')">
+        <img src="./assets/img/copy.png" />
+        <div class="copy_title">내용 복사</div>
+    </div>    
     <div class="diary_buttons">
         <button class="diary_modify" onclick="modifyDiary()">수정</button>
-        <button class="diary_back" onclick="deleteDiary()">삭제</button>
+        <button class="diary_back" onclick="openModalDelete()">삭제</button>
     </div>
     <div class="diary_chat_container">
         <div class="chat_container_title">회고</div>
-        <div class="chat_container_input">
+        <form onsubmit="uploadChat()" class="chat_container_input">
             <input id="chat_content" type="text" class="input_box" placeholder="회고를 남겨보세요."/>
             <button class="input_button" onclick="uploadChat()">입력</button>
-        </div>
+        </form>
     </div>
     <div class="chat_list">
         ${diaryChatting.join().replace(/,/g,'')}
     <div/>
     `
+}
+
+const copyDiary = (text) => {
+    navigator.clipboard.writeText(text)
+
+    document.getElementById("toast_copy").style.display = "flex"
+    setTimeout(() => {
+    document.getElementById("toast_copy").style.display = "none"
+    }, 1950)
 }
 
 const deleteDiary = () => {
@@ -179,4 +192,12 @@ const deleteDiary = () => {
 
     location.href = "main.html"
     alert("일기가 삭제되었습니다.")
+}
+
+const openModalDelete = () => {
+    document.getElementById("modal_diaryDelete").style.display = "block"
+}
+
+const closeDiaryDelete = () => {
+    document.getElementById("modal_diaryDelete").style.display = "none"
 }

@@ -202,6 +202,10 @@ a {
     display: none;
 }
 
+.modal_diaryDelete {
+    display: none;
+}
+
 .modal_background {
     position: absolute;
     top: 0;
@@ -259,8 +263,18 @@ a {
 }
 
 .inputinput {
+    border: 1px solid #D4D3D3;
     margin-top: 8px;
     height: 48px;
+    width: 100%;
+    padding: 16px 12px;
+    border-radius: 9px;
+}
+
+.inputcontent {
+    border: 1px solid #D4D3D3;
+    margin-top: 8px;
+    height: 128px;
     width: 100%;
     padding: 16px 12px;
     border-radius: 9px;

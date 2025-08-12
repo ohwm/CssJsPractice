@@ -66,7 +66,7 @@
                     </div>
                     <div class="writing_contents">
                         <div class="writing_wpahr">내용</div>
-                        <input class="inputinput" id="contents_value" type="text" placeholder="내용을 입력합니다.">
+                        <textarea class="inputcontent" id="contents_value" type="text" placeholder="내용을 입력합니다."></textarea>
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
     </div>
     
     <div class="modal_diaryDone" id="modal_diaryDone">
-        <div class="modal_background"></div>
+        <div onclick="closeAll()" class="modal_background"></div>
         <div class="modal_small">
             <div class="done_title">일기 등록 완료</div>
             <div class="done_content">등록이 완료 되었습니다.</div>
@@ -87,13 +87,25 @@
     </div>
     
     <div class="modal_diaryStop" id="modal_diaryStop">
-        <div class="modal_background"></div>
+        <div onclick="closeAll()" class="modal_background"></div>
         <div class="modal_small">
             <div class="done_title">일기 등록 취소</div>
             <div class="done_content">일기 등록을 취소 하시겠어요?</div>
             <div class="plus_buttons">
                 <button class="button_quit" onclick="closeDiaryStop()">계속 작성</button>
                 <button class="button_write" onclick="closeAll()">등록 취소</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal_diaryDelete" id="modal_diaryDelete">
+        <div onclick="closeDiaryDelete()" class="modal_background"></div>
+        <div class="modal_small">
+            <div class="done_title">일기 삭제</div>
+            <div class="done_content">일기를 삭제 하시겠어요?</div>
+            <div class="plus_buttons">
+                <button class="button_quit" onclick="closeDiaryDelete()">취소</button>
+                <button class="button_write" onclick="delete_diary()">삭제</button>
             </div>
         </div>
     </div>

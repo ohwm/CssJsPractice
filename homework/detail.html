@@ -3,6 +3,7 @@
 <head>
     <title>일기 상세페이지</title>
     <link rel="stylesheet" href="./css/detail.css">
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
     <div class="container">
@@ -14,6 +15,23 @@
             <!-- 일기 들어가는 곳 -->
             
         </div>
+    </div>
+
+    <div class="modal_diaryDelete" id="modal_diaryDelete">
+        <div onclick="closeDiaryDelete()" class="modal_background"></div>
+        <div class="modal_small">
+            <div class="done_title">일기 삭제</div>
+            <div class="done_content">일기를 삭제 하시겠어요?</div>
+            <div class="plus_buttons">
+                <button class="button_quit" onclick="closeDiaryDelete()">취소</button>
+                <button class="button_write" onclick="deleteDiary()">삭제</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast_copy" class="toast_copy">
+        <img src="./assets/img/copy.png" />
+        <div class="copy_content">복사되었습니다</div>
     </div>
 
     <script src="./javascript/detail.js"></script>

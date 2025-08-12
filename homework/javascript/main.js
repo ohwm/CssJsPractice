@@ -126,7 +126,7 @@ const loadDiary = (diary) => {
                     <div class="diary_title">${el.title}</div>
                 </div>
             </div>
-            <button class="diary_close_btn" onclick="delete_diary(event, ${el.diaryCnt})">
+            <button class="diary_close_btn" onclick="openModalDelete(event, ${el.diaryCnt})">
                 <img src="./assets/img/lightmode_icon/close_outline_light_m.svg" />
             </button>
         </a>
@@ -134,6 +134,21 @@ const loadDiary = (diary) => {
 
     if(diary !== null)
         document.getElementById("table_items").innerHTML = diaryTag.join("")
+}
+
+let diaryNum = -1;
+
+const openModalDelete = (event, num) => {
+    document.body.style.overflow = "hidden"
+    window.scrollTo({ top: 0})
+    event.preventDefault();
+    document.getElementById("modal_diaryDelete").style.display = "block"
+    diaryNum = num
+}
+
+const closeDiaryDelete = () => {
+    document.body.style.overflow = "auto"
+    document.getElementById("modal_diaryDelete").style.display = "none"
 }
 
 const openDiaryWrite = () => {
@@ -168,10 +183,9 @@ const closeAll = () => {
     document.getElementById("contents_value").value = ""
 }
 
-const delete_diary = (event, number) => {
-    event.preventDefault();
+const delete_diary = () => {
     const diaryArray = JSON.parse(localStorage.getItem("diaryArray"));
-    diaryArray.splice(number, 1)
+    diaryArray.splice(diaryNum, 1)
 
     diaryArray.map((el, index) => {
         el.diaryCnt = index;
@@ -181,6 +195,7 @@ const delete_diary = (event, number) => {
 
     loadDiary(diaryArray)
 
+    closeDiaryDelete()
     alert("일기가 삭제되었습니다.")
 }
 
