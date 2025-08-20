@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>이미지비율 실습</title>
+    <style>
+        .img1 {
+            width: 300px;
+            aspect-ratio: 3 / 1; /* 가로 3 / 세로 1 */
+        }
+
+        .img2 {
+            height: 300px;
+            aspect-ratio: 3 / 1; /* 가로 3 / 세로 1 */
+        }
+
+        .tag {
+            height: 300px;
+            aspect-ratio:  1 / 2;
+        }
+    </style>
+</head>
+<body>
+    <div>3:1 방식 (가로사이즈를 알고있을 때)</div>    
+    <img src="./00-image.jpg" class="img1" alt="" />
+
+    <div>3:1 방식 (세로사이즈를 알고있을 때)</div>    
+    <img src="./00-image.jpg" class="img2" alt="" />
+
+    <div>1:2 방식 (태그도 됨)</div>    
+    <button class="tag"></button>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>이미지맞춤비율 실습</title>
+    <style>
+        .scroll {
+            height: 500px;
+            overflow: scroll;
+
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .img {
+            object-fit: cover;
+            width: 300px;
+            aspect-ratio: 16 / 9;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll">
+        <img src="./00-image.jpg" class="img" alt="" />
+        <img src="./00-image.jpg" class="img" alt="" />
+        <img src="./00-image.jpg" class="img" alt="" />
+        <img src="./00-image.jpg" class="img" alt="" />
+        <img src="./00-image.jpg" class="img" alt="" />
+        <img src="./00-image.jpg" class="img" alt="" />
+    </div>
+</body>
+</html>
