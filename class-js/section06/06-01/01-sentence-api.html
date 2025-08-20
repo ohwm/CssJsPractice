@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>문장API 실습</title>
+    <script>
+        const callSentence = () => {
+            console.log("실행은 되네")
+            fetch("https://koreanjson.com/posts/3").then((받아온결과) => {
+                받아온결과.json().then((객체만뽑힌결과) => {
+                    console.log(`${객체만뽑힌결과}`)
+                    alert(객체만뽑힌결과.title)
+                    alert(객체만뽑힌결과.content)
+                })
+            })
+        }
+    </script>
+</head>
+<body>
+    <button onclick="callSentence()">문장 불러오기</button>
+</body>
+</html>

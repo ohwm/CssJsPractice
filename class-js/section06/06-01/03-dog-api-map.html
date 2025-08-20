@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>이미지API 실습</title>
+    <script>
+        const callDog = () => {
+            console.log("실행은 되네")
+            fetch("https://dog.ceo/api/breeds/image/random/3").then((받아온결과) => {
+                받아온결과.json().then((객체만뽑힌결과) => {
+                    console.log(객체만뽑힌결과.message)
+                    document.getElementById("box").innerHTML = 객체만뽑힌결과.message.map((el) => `
+                        <img src="${el}" width="300px"/>
+                    `).join("")
+                })
+            })
+        }
+    </script>
+</head>
+<body>
+    <button onclick="callDog()">강아지 불러오기</button>
+    <div id="box"></div>
+</body>
+</html>
