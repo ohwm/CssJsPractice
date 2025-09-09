@@ -52,6 +52,7 @@ a {
 } 
 
 .nav_unselected {
+    cursor: pointer;
     color: #ABABAB;
     font-size: 24px;
     font-weight: 500;
@@ -73,6 +74,14 @@ a {
 }
 
 #emotion_filter {
+    width: 7.5rem;
+    height: 3rem;
+    border: 1px solid #C7C7C7;
+    border-radius: 0.625rem;
+    padding: 0.625rem 0.75rem;
+}
+
+#dog_filter {
     width: 7.5rem;
     height: 3rem;
     border: 1px solid #C7C7C7;
@@ -105,6 +114,35 @@ a {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
+}
+
+.container_table_dog {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.dog_img_normal {
+    border-radius: 16px;
+    object-fit: cover;
+    width:640px;
+    height:640px;
+}
+
+.dog_img_width {
+    border-radius: 16px;
+    object-fit: cover;
+    width: 640px;
+    aspect-ratio: 4 / 3;
+}
+
+.dog_img_height {
+    border-radius: 16px;
+    object-fit: cover;
+    height: 640px;
+    aspect-ratio: 3 / 4;
 }
 
 .diary_atag:hover {

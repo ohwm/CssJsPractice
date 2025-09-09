@@ -16,8 +16,8 @@
 
         <!-- 네비게이션 -->
         <div class="container_nav">
-            <div class="nav_selected">일기보관함</div>
-            <div class="nav_unselected">사진보관함</div>
+            <div id="container_nav_diary" class="nav_selected" onclick="changeToDiaryContainer()">일기보관함</div>
+            <div id="container_nav_dog" class="nav_unselected" onclick="changeToDogContainer()">사진보관함</div>
         </div>
 
         <div id="nav_bar" class="container_findAndPlus">
@@ -31,18 +31,18 @@
                     <option value="extra">기타</option>
                 </select>
             </div>
-            <button class="nav_diaryBtn" onclick="openDiaryWrite()">
+            <button id="nav_diaryBtn" class="nav_diaryBtn" onclick="openDiaryWrite()">
                 <img src="./assets/img/plus.png" alt="">
                 일기쓰기
             </button>
         </div>
 
-        <div id="container_table" class="container_table">
-            <div id="table_items">
-                <!-- 아이템 추가되는 곳 -->
-            </div>
+        <div id="container_nav_change">
+            
         </div>
     </div>
+
+    <!-- 모달 영역 -->
 
     <div id="modal_diaryplus" class="modal_diaryplus">
         <div onclick="closeModalDiaryPlus()" class="modal_background"></div>

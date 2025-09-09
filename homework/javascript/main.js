@@ -1,16 +1,110 @@
 window.onload = () => {
+    changeToDiaryContainer();
+}
+
+const diaryContainer = `
+    <div id="container_table" class="container_table">
+        <div id="table_items">
+            <!-- 아이템 추가되는 곳 -->
+        </div>
+    </div>
+`
+const dogContainer = `
+    <div id="container_table_dog" class="container_table_dog"></div>
+`
+
+const diaryFilter = `
+    <select name="emotion" id="emotion_filter" onchange="filteringDiary(event)">
+        <option value="all">전체</option>
+        <option value="happy">행복해요</option>
+        <option value="sad">슬퍼요</option>
+        <option value="suprised">놀랐어요</option>
+        <option value="angry">화나요</option>
+        <option value="extra">기타</option>
+    </select>
+`
+
+const dogFilter = `
+    <select name="dog" id="dog_filter" onchange="filteringDog(event)">
+        <option value="all">기본형</option>
+        <option value="width">가로형</option>
+        <option value="height">세로형</option>
+    </select>
+`
+
+const changeToDiaryContainer = () => {
+    document.getElementById("container_nav_diary").className = "nav_selected";
+    document.getElementById("container_nav_dog").className = "nav_unselected";
+
+    document.getElementById("filters").innerHTML = diaryFilter;
+    document.getElementById("nav_diaryBtn").style.display = 'flex';
+
+    document.getElementById("container_nav_change").innerHTML = diaryContainer;
     const diary = JSON.parse(localStorage.getItem("diaryArray"))
     const diaryLiberary = diary === null ? [] : diary
     loadDiary(diary)
 }
 
+const changeToDogContainer = () => {
+    document.getElementById("container_nav_diary").className = "nav_unselected";
+    document.getElementById("container_nav_dog").className = "nav_selected";
+    document.getElementById("container_nav_change").innerHTML = dogContainer;
+    document.getElementById("filters").innerHTML = dogFilter;
+
+    document.getElementById("nav_diaryBtn").style.display = 'none';
+
+    fetch("https://dog.ceo/api/breeds/image/random/10").then((받아온결과) => {
+        받아온결과.json().then((객체만뽑힌결과) => {
+            console.log(객체만뽑힌결과.message)
+            document.getElementById("container_table_dog").innerHTML = 객체만뽑힌결과.message.map((el) => `
+                <img src="${el}" class="dog_img_normal"/>
+            `).join("")
+        })
+    })
+}
+
+const filteringDog = (event) => {
+    const dog = event.target.value
+    console.log("실행은 되는거지?")
+    switch (dog) {
+        case 'all': 
+            document.querySelectorAll('.dog_img_width').forEach((element) => {
+                element.classList.replace('dog_img_width', 'dog_img_normal');
+            });
+            document.querySelectorAll('.dog_img_height').forEach((element) => {
+                element.classList.replace('dog_img_height', 'dog_img_normal');
+            });
+            console.log("실행은 되는거지? 노말");
+            break;
+        case 'width': 
+            document.querySelectorAll('.dog_img_normal').forEach((element) => {
+                element.classList.replace('dog_img_normal', 'dog_img_width');
+            });
+            document.querySelectorAll('.dog_img_height').forEach((element) => {
+                element.classList.replace('dog_img_height', 'dog_img_width');
+            });
+            console.log("실행은 되는거지? 가로");
+            break;
+        case 'height': 
+            document.querySelectorAll('.dog_img_normal').forEach((element) => {
+                element.classList.replace('dog_img_normal', 'dog_img_height');
+            });
+            document.querySelectorAll('.dog_img_width').forEach((element) => {
+                element.classList.replace('dog_img_width', 'dog_img_height');
+            });
+            console.log("실행은 되는거지? 세로");
+            break;    
+    }
+}
 
 window.addEventListener("scroll", () => {
-    if (window.scrollY > 0) {
-        document.getElementById("emotion_filter").style = "background-color: black; color: white;"
-    } else {
-        document.getElementById("emotion_filter").style = "background-color: white; color: black;"
-    }
+    // if (window.scrollY > 0) {
+    //     document.getElementById("emotion_filter").style = "background-color: black; color: white;"
+    //     document.getElementById("dog_filter").style = "background-color: black; color: white;"
+    // } else {
+    //     document.getElementById("emotion_filter").style = "background-color: white; color: black;"
+    //     document.getElementById("dog_filter").style = "background-color: white; color: black;"
+    // }
 
     const footer = document.getElementById("footer")
     const floatingBtn = document.getElementById("floating_button")
