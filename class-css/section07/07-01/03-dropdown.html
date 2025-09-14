@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>드롭다운 실습</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .dropdownTitle {
+            appearance: none;
+            width: 150px;
+            height: 40px;
+            border: 2px solid skyblue;
+            border-radius: 10px;
+            padding: 0 10px;
+            background-color: white;
+            cursor: pointer;
+            padding: 10px;
+            --select: "선택하세요.";
+        }
+
+        .dropdownTitle::after {
+            content: var(--select);
+        }
+
+        .dropdownTitle:checked {
+            background-color: lightskyblue;
+        }
+
+        .dropdownTitle:checked + .dropdownList {
+            display: block;
+        }
+
+        .dropdownList {
+            list-style: none;
+            width: 150px;
+            border: 2px solid skyblue;
+            border-radius: 10px;
+            margin-top: 5px;
+            display: none;
+            overflow: hidden;
+        }
+
+        .dropdownList li {
+            border-bottom: 1px solid lightgray;
+        }
+
+        .dropdownList li:last-child {
+            border-bottom: none;
+        }
+
+        .dropdownList input {
+            display: none;
+        }  
+
+        .dropdownList label {
+            display: block;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .dropdownList label:hover {
+            background-color: lightgray;
+        }
+    </style>
+    <script>
+        const dropdownSelect = (event) => {
+            const title = document.querySelector(".dropdownTitle");
+            title.style.setProperty("--select", `"${event.target.id}"`); // 선택한 값으로 변경 / 알아두기
+            title.click(); // 드롭다운 닫기
+        }
+    </script>
+</head>
+<body>
+    <input type="checkbox" class="dropdownTitle" />
+    <ul class="dropdownList">
+        <li>
+            <input type="radio" name="fruit" id="appleClick" onclick="dropdownSelect(event)" />
+            <label for="appleClick">사과</label>
+        </li>
+        <li>
+            <input type="radio" name="fruit" id="bananaClick" onclick="dropdownSelect(event)" />
+            <label for="bananaClick">바나나</label>
+        </li>
+        <li>
+            <input type="radio" name="fruit" id="strawberryClick" onclick="dropdownSelect(event)" />
+            <label for="strawberryClick">딸기</label>
+        </li>
+    </ul>
+</body>
+</html>

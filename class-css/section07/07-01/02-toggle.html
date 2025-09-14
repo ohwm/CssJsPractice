@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>토글 실습</title>
+    <style>
+        .toggle {
+            appearance: none;
+            width: 40px;
+            height: 24px;
+            background-color: lightgray;
+            border-radius: 15px;
+            padding: 2px;
+        }
+
+        .toggle::after {
+            content: ""; /* 없으면 안됨 */
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .toggle:checked {
+            background-color: orange;
+        }
+
+        .toggle:checked::after {
+            transform: translateX(Calc(100% - 4px)); /** 100% = 40px(부모너비) - 4px(패딩2px + 패딩2px) */
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" class="toggle" />
+</body>
+</html>
