@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>검색 실습</title>
+    <script>
+        let timer = "Not Yet";
+
+        const searching = (event) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                const word = event.target.value; // 재사용을 위해 id 대신 event를 더 자주 사용하자
+
+                document.getElementById("result").innerHTML = `<img src="https://cataas.com/cat/${word}/says/hello" width="300px"/>`
+            }, 2000); // 2초 후에 실행
+        }
+    </script>
+</head>
+<body>
+    <input type="text" placeholder="검색어를 입력하세요." oninput="searching(event)" />
+
+    <div id="result"></div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>다크모드 실습</title>
+    <script>
+        const darkmode = () => {
+            document.body.classList.toggle('dark');
+        } 
+    </script>
+
+    <style>
+        body.dark {
+            background-color: black;
+            color: white;
+        }
+
+        .dark input {
+            background-color: gray;
+        }
+
+        .dark input::placeholder {
+            color: orange;
+        }
+
+        .dark button {
+            background-color: aqua;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" onclick="darkmode()" />
+    다크모드
+
+    <br /><br />
+    <div class="signup">
+        이메일: <input type="text" placeholder="이메일을 입력하세요." /><br />
+        비밀번호: <input type="password" placeholder="비밀번호를 입력하세요." /><br />
+        <input type="radio" name="sex" /> 남자
+        <input type="radio" name="sex" /> 여자 <br />
+        <button>회원가입</button>
+    </div>
+    
+</body>
+</html>
