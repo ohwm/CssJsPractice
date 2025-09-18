@@ -99,22 +99,6 @@ const filteringDog = (event) => {
 
 let scrolltimer = "NotYet"; // 무한스크롤 타이머 변수
 window.addEventListener("scroll", () => {
-    // 무한스크롤 기능 (강아지 사진목록)
-    if (scrolltimer !== "NotYet") return; // Early-exit 방식 <- 중요!!!
-    scrolltimer = setTimeout(() => {
-        scrolltimer = "NotYet"; // 타이머 초기화
-    }, 1000); // 1초 후에 타이머 초기화
-    const scrollPercent = document.documentElement.scrollTop / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
-    console.log(scrollPercent);
-
-    if (scrollPercent <= 0.7) return;
-    fetch("https://dog.ceo/api/breeds/image/random").then((받아온결과) => {
-        받아온결과.json().then((객체만뽑힌결과) => {
-            console.log(객체만뽑힌결과.message)
-            document.getElementById("container_table_dog").innerHTML += `<img src="${객체만뽑힌결과.message}" class="dog_img_normal" />`
-        })
-    })
-
     // 푸터
     const footer = document.getElementById("footer")
     const floatingBtn = document.getElementById("floating_button")
@@ -135,6 +119,24 @@ window.addEventListener("scroll", () => {
         // 기본 위치
         floatingBtn.style.bottom = "2.5rem";
     }
+
+    // 무한스크롤 기능 (강아지 사진목록)
+    if (scrolltimer !== "NotYet") return; // Early-exit 방식 <- 중요!!!
+    scrolltimer = setTimeout(() => {
+        scrolltimer = "NotYet"; // 타이머 초기화
+    }, 1000); // 1초 후에 타이머 초기화
+    const scrollPercent = document.documentElement.scrollTop / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
+    console.log(scrollPercent);
+
+    if (scrollPercent <= 0.7) return;
+    fetch("https://dog.ceo/api/breeds/image/random").then((받아온결과) => {
+        받아온결과.json().then((객체만뽑힌결과) => {
+            console.log(객체만뽑힌결과.message)
+            const dog_filter = document.getElementById("dog_filter").value
+            document.getElementById("container_table_dog").innerHTML += `<img src="${객체만뽑힌결과.message}" class="dog_img_${dog_filter}" />`
+        })
+    })
+
 })
 
 
