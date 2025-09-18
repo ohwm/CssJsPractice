@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>무한스크롤 실습</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 500px;
+            background-color: skyblue;
+            margin: 50px;
+        }
+    </style>
+    <script>
+        window.addEventListener("scroll", () => {
+            const scrollPercent = document.documentElement.scrollTop / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
+            console.log(scrollPercent);
+
+            if (scrollPercent >= 0.7){
+                document.getElementById("container").innerHTML += `<div class="box"></div>`;
+            }
+        })
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+</body>
+</html>
