@@ -31,10 +31,13 @@
                     <option value="extra">기타</option>
                 </select>
             </div>
-            <button id="nav_diaryBtn" class="nav_diaryBtn" onclick="openDiaryWrite()">
-                <img src="./assets/img/plus.png" alt="">
-                일기쓰기
-            </button>
+            <div class="findAndPlus">
+                <input type="text" id="search_bar" class="search_bar" placeholder="검색어를 입력하세요." onkeyup="searchDiary(event)"/>
+                <button id="nav_diaryBtn" class="nav_diaryBtn" onclick="openDiaryWrite()">
+                    <img src="./assets/img/plus.png" alt="">
+                    일기쓰기
+                </button>
+            </div>
         </div>
 
         <div id="container_nav_change">

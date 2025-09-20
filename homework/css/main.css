@@ -89,6 +89,19 @@ a {
     padding: 0.625rem 0.75rem;
 }
 
+.findAndPlus {
+    display: flex;
+    gap: 1rem;
+}
+
+.search_bar {
+    width: 20rem;
+    height: 3rem;
+    border: 1px solid #C7C7C7;
+    border-radius: 0.625rem;
+    padding: 0.625rem 0.75rem;
+}
+
 .nav_diaryBtn {
     width: 6.875rem;
     height: 3rem;

@@ -26,7 +26,7 @@ const diaryFilter = `
 
 const dogFilter = `
     <select name="dog" id="dog_filter" onchange="filteringDog(event)">
-        <option value="all">기본형</option>
+        <option value="normal">기본형</option>
         <option value="width">가로형</option>
         <option value="height">세로형</option>
     </select>
@@ -38,6 +38,7 @@ const changeToDiaryContainer = () => {
 
     document.getElementById("filters").innerHTML = diaryFilter;
     document.getElementById("nav_diaryBtn").style.display = 'flex';
+    document.getElementById("search_bar").style.display = 'flex';
 
     document.getElementById("container_nav_change").innerHTML = diaryContainer;
     const diary = JSON.parse(localStorage.getItem("diaryArray"))
@@ -52,6 +53,7 @@ const changeToDogContainer = () => {
     document.getElementById("filters").innerHTML = dogFilter;
 
     document.getElementById("nav_diaryBtn").style.display = 'none';
+    document.getElementById("search_bar").style.display = 'none';
 
     fetch("https://dog.ceo/api/breeds/image/random/10").then((받아온결과) => {
         받아온결과.json().then((객체만뽑힌결과) => {
@@ -215,6 +217,21 @@ const filteringDiary = (event) => {
     let filteredDiary = emotionValue !== "all" ? diaryArray.filter((el) => el.emotion === emotionValue) : diaryArray
 
     loadDiary(filteredDiary)
+}
+
+let searchTimer = "NotYet";
+const searchDiary = (event) => {
+    if (searchTimer !== "NotYet") {
+        clearTimeout(searchTimer);
+    }
+    searchTimer = setTimeout(() => {
+        searchTimer = "NotYet";
+        const keyword = event.target.value
+        const diaryArray = JSON.parse(localStorage.getItem("diaryArray"));
+        let searchedDiary = diaryArray.filter((el) => el.title.includes(keyword))
+
+        loadDiary(searchedDiary)
+    }, 1000);
 }
 
 const loadDiary = (diary) => {
