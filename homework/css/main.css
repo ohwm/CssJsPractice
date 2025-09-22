@@ -4,11 +4,48 @@
     padding: 0;
 }
 
+:root {
+    --bg-color: white;
+    --text-color: black;
+    --title: black;
+    --diary-date: #919191;
+    --underbar: black;
+    --button-color: black;
+    --footer: #dbdbdb;
+    --toggle-search: white;
+    --toggle-search-border: #C7C7C7;
+    --modal-border: #D4D3D4;
+    --modal-bg: white;
+    --modal-input-bg: white;
+    --modal-button-border: black;
+    --done-content: #504d4d;
+}
+
+.dark {
+    --bg-color: #1C1C1C;
+    --text-color: white;
+    --title: white;
+    --diary-date: #ABABAB;
+    --underbar: white;
+    --footer: #252525;
+    --button-color: #F2F2F2;
+    --toggle-search: black;
+    --toggle-search-border: #333333;
+    --modal-border: #333333;
+    --modal-bg: #1C1C1C;
+    --modal-input-bg: #000000;
+    --modal-button-border: #5F5F5F;
+    --done-content: #B3B3B3;
+}
+
 body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: 0.5s;
 }
 
 a {
@@ -28,6 +65,9 @@ a {
     letter-spacing: -1px;
     font-weight: 700;
     padding: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .container_banner {
@@ -42,14 +82,52 @@ a {
 }
 
 .nav_selected {
+    transition: 0.5s;
     font-size: 24px;
     font-weight: 700;
     line-height: 24px;
     letter-spacing: -1px;
     height: 3.125rem;
     padding: 0.75rem 0.5rem;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid var(--underbar);
 } 
+
+.toggle_switch {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.toggle {
+    width: 58px;
+    height: 32px;
+    appearance: none;
+    background: #c6c6c6;
+    outline: none;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.toggle:checked {
+    background: #3AD84A;
+}
+
+.toggle::after {
+    content: '';
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: white;
+    display: block;
+    transition: transform .3s;
+}
+
+.toggle:checked::after {
+    transform: translateX(Calc(100% + 2px));
+}
 
 .nav_unselected {
     cursor: pointer;
@@ -95,21 +173,27 @@ a {
 }
 
 .search_bar {
+    transition: 0.5s;
+    background-color: var(--toggle-search);
     width: 20rem;
     height: 3rem;
-    border: 1px solid #C7C7C7;
+    border: 1px solid var(--toggle-search-border);
+    color: var(--text-color);
     border-radius: 0.625rem;
     padding: 0.625rem 0.75rem;
 }
 
 .nav_diaryBtn {
-    width: 6.875rem;
+    cursor: pointer;
+    width: 6rem;
     height: 3rem;
     display: flex;
     align-items: center;
+    justify-content: center;
+    border: none;
     padding: 0.75rem 0.725rem;
-    background-color: black;
-    color: white;
+    background-color: var(--button-color);
+    color: var(--bg-color);
     border-radius: 0.9375rem;
     font-size: 0.9rem;
     font-weight: 600;
@@ -222,15 +306,17 @@ a {
 }
 
 .diary_title {
+    transition: 0.5s;
     font-size: 18px;
     line-height: 24px;
     font-weight: 700;
     letter-spacing: -1px;
-    color: black;
+    color: var(--title);
 }
 
 .table_plus {
-    background-color: white;
+    background-color: var(--modal-bg);
+    border: 1px solid var(--modal-border);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -315,7 +401,9 @@ a {
 }
 
 .inputinput {
-    border: 1px solid #D4D3D3;
+    background-color: var(--modal-input-bg);
+    border: 1px solid var(--modal-border);
+    color: var(--text-color);
     margin-top: 8px;
     height: 48px;
     width: 100%;
@@ -324,7 +412,9 @@ a {
 }
 
 .inputcontent {
-    border: 1px solid #D4D3D3;
+    background: var(--modal-input-bg);
+    border: 1px solid var(--modal-border);
+    color: var(--text-color);
     margin-top: 8px;
     height: 128px;
     width: 100%;
@@ -350,9 +440,9 @@ a {
     width: 6.5rem;
     height: 3rem;
     border-radius: 0.625rem;
-    border: 1px solid black;
-    color: black;
-    background-color: white;
+    border: 1px solid var(--modal-button-border);
+    color: var(--text-color);
+    background-color: var(--modal-bg);
     font-size: 15px;
     font-weight: 600;
     line-height: 24px;
@@ -373,7 +463,7 @@ a {
 }
 
 .modal_small {
-    background-color: white;
+    background-color: var(--modal-bg);
     position: absolute;
     top: calc(50% - 240px);
     left: calc(50% - 240px);
@@ -393,7 +483,7 @@ a {
 }
 
 .done_content {
-    color: #504d4d;
+    color: var(--done-content);
     margin-top: 16px;
     font-size: 18px;
     line-height: 24px;
@@ -405,8 +495,9 @@ a {
     width: 100%;
     height: 48px;
     padding: 12px;
-    background-color: black;
-    color: white;
+    border: none;
+    background-color: var(--button-color);
+    color: var(--modal-input-bg);
     font-size: 18px;
     line-height: 24px;
     letter-spacing: -1px;
@@ -429,7 +520,7 @@ a {
 
 /* 푸터는 어떻게 설정하는지 더 공부해보자 */
 .footer {
-    background-color: #dbdbdb;
+    background-color: var(--footer);
     width: 100%;
     display: flex;
     justify-content: left;

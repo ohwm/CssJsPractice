@@ -10,6 +10,10 @@
         <!-- 헤더 -->
         <div class="container_header">
             <div>명후의 다이어리</div>
+            <div class="toggle_switch">
+                <label for="toggle" class="toggle_label">다크모드</label>
+                <input type="checkbox" class="toggle" id="toggle" onclick="darkmode()"/>
+            </div>
         </div>
         <!-- 이미지 배너 -->
         <img class="container_banner" src="./assets/img/banner.png">
@@ -34,7 +38,6 @@
             <div class="findAndPlus">
                 <input type="text" id="search_bar" class="search_bar" placeholder="검색어를 입력하세요." onkeyup="searchDiary(event)"/>
                 <button id="nav_diaryBtn" class="nav_diaryBtn" onclick="openDiaryWrite()">
-                    <img src="./assets/img/plus.png" alt="">
                     일기쓰기
                 </button>
             </div>

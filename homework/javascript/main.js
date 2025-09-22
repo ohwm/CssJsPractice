@@ -2,6 +2,10 @@ window.onload = () => {
     changeToDiaryContainer();
 }
 
+const darkmode = () => {
+    document.body.classList.toggle('dark');
+}  
+ 
 const diaryContainer = `
     <div id="container_table" class="container_table">
         <div id="table_items">
