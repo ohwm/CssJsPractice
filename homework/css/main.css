@@ -184,6 +184,7 @@ a {
 }
 
 .nav_diaryBtn {
+    transition: 0.5s;
     cursor: pointer;
     width: 6rem;
     height: 3rem;
