@@ -4,7 +4,63 @@ window.onload = () => {
 
 const darkmode = () => {
     document.body.classList.toggle('dark');
+    const isDark = document.body.classList.contains('dark');
+    setFloatingIcon(isDark);
 }  
+
+const setFloatingIcon = (isDark) => {
+  const lightIcon = document.querySelector('.floating_icon-light');
+  const darkIcon = document.querySelector('.floating_icon-dark');
+  if (isDark) {
+    lightIcon.classList.remove('active');
+    darkIcon.classList.add('active');
+  } else {
+    lightIcon.classList.add('active');
+    darkIcon.classList.remove('active');
+  }
+}
+
+const dropdownSelect = (event) => {
+    const title = document.querySelector(".dropdownTitle");
+    switch (event.target.id) {
+        case 'all': 
+            title.style.setProperty("--select", `"전체"`);
+            title.click();
+            break;
+        case 'happy': 
+            title.style.setProperty("--select", `"행복해요"`);
+            title.click();
+            break;
+        case 'sad': 
+            title.style.setProperty("--select", `"슬퍼요"`);
+            title.click();
+            break;
+        case 'suprised': 
+            title.style.setProperty("--select", `"놀랐어요"`);
+            title.click();
+            break;
+        case 'angry': 
+            title.style.setProperty("--select", `"화나요"`);
+            title.click();
+            break;    
+        case 'extra': 
+            title.style.setProperty("--select", `"기타"`);
+            title.click();
+            break;  
+        case 'normal': 
+            title.style.setProperty("--select", `"기본형"`);
+            title.click();
+            break;
+        case 'width': 
+            title.style.setProperty("--select", `"가로형"`);
+            title.click();
+            break;
+        case 'height': 
+            title.style.setProperty("--select", `"세로형"`);
+            title.click();
+            break;
+    }
+}
  
 const diaryContainer = `
     <div id="container_table" class="container_table">
@@ -18,25 +74,56 @@ const dogContainer = `
 `
 
 const diaryFilter = `
-    <select name="emotion" id="emotion_filter" onchange="filteringDiary(event)">
-        <option value="all">전체</option>
-        <option value="happy">행복해요</option>
-        <option value="sad">슬퍼요</option>
-        <option value="suprised">놀랐어요</option>
-        <option value="angry">화나요</option>
-        <option value="extra">기타</option>
-    </select>
+    <input type="checkbox" class="dropdownTitle" />
+    <ul class="dropdownList">
+        <li>
+            <input type="radio" name="emotion" id="all" onclick="dropdownSelect(event); filteringDiary(event)"/>
+            <label for="all">전체</label>
+        </li>
+        <li>
+            <input type="radio" name="emotion" id="happy" onclick="dropdownSelect(event); filteringDiary(event)"/>
+            <label for="happy">행복해요</label>
+        </li>
+        <li>
+            <input type="radio" name="emotion" id="sad" onclick="dropdownSelect(event); filteringDiary(event)"/>
+            <label for="sad">슬퍼요</label>
+        </li>
+        <li>
+            <input type="radio" name="emotion" id="suprised" onclick="dropdownSelect(event); filteringDiary(event)"/>
+            <label for="suprised">놀랐어요</label>
+        </li>
+        <li>
+            <input type="radio" name="emotion" id="angry" onclick="dropdownSelect(event); filteringDiary(event)"/>
+            <label for="angry">화나요</label>
+        </li>
+        <li>
+            <input type="radio" name="emotion" id="extra" onclick="dropdownSelect(event); filteringDiary(event)"/>
+            <label for="extra">기타</label>
+        </li>
+    </ul>
 `
 
 const dogFilter = `
-    <select name="dog" id="dog_filter" onchange="filteringDog(event)">
-        <option value="normal">기본형</option>
-        <option value="width">가로형</option>
-        <option value="height">세로형</option>
-    </select>
+    <input type="checkbox" class="dropdownTitle" />
+    <ul class="dropdownList">
+        <li>
+            <input type="radio" name="dog" id="normal" onclick="dropdownSelect(event); filteringDog(event)"/>
+            <label for="normal">기본형</label>
+        </li>
+        <li>
+            <input type="radio" name="dog" id="width" onclick="dropdownSelect(event); filteringDog(event)"/>
+            <label for="width">가로형</label>
+        </li>
+        <li>
+            <input type="radio" name="dog" id="height" onclick="dropdownSelect(event); filteringDog(event)"/>
+            <label for="sheightad">세로형</label>
+        </li>
+    </ul>
 `
 
+let isDiary = true;
 const changeToDiaryContainer = () => {
+    isDiary = true;
     document.getElementById("container_nav_diary").className = "nav_selected";
     document.getElementById("container_nav_dog").className = "nav_unselected";
 
@@ -51,6 +138,7 @@ const changeToDiaryContainer = () => {
 }
 
 const changeToDogContainer = () => {
+    isDiary = false;
     document.getElementById("container_nav_diary").className = "nav_unselected";
     document.getElementById("container_nav_dog").className = "nav_selected";
     document.getElementById("container_nav_change").innerHTML = dogContainer;
@@ -70,7 +158,8 @@ const changeToDogContainer = () => {
 }
 
 const filteringDog = (event) => {
-    const dog = event.target.value
+    const dog = event.target.id
+    console.log(dog)
     console.log("실행은 되는거지?")
     switch (dog) {
         case 'all': 
@@ -125,6 +214,8 @@ window.addEventListener("scroll", () => {
         // 기본 위치
         floatingBtn.style.bottom = "2.5rem";
     }
+
+    if (isDiary) return; // 다이어리 화면일 때는 무한스크롤 기능 작동 X
 
     // 무한스크롤 기능 (강아지 사진목록)
     if (scrolltimer !== "NotYet") return; // Early-exit 방식 <- 중요!!!
@@ -216,7 +307,8 @@ const uploadDiary = () => {
 }
 
 const filteringDiary = (event) => {
-    const emotionValue = event.target.value
+    const emotionValue = event.target.id
+    console.log(emotionValue)
     const diaryArray = JSON.parse(localStorage.getItem("diaryArray"));
     let filteredDiary = emotionValue !== "all" ? diaryArray.filter((el) => el.emotion === emotionValue) : diaryArray
 
