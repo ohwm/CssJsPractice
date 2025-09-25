@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>달력 클릭영역 실습</title>
+    <style>
+        .date {
+            position: relative;
+            width: 150px;
+        }
+
+        .date::-webkit-calendar-picker-indicator {
+            background: transparent;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .date::-webkit-datetime-edit-text,
+        ::-webkit-datetime-edit-month-field,
+        ::-webkit-datetime-edit-day-field,
+        ::-webkit-datetime-edit-year-field {
+            display: none;
+        }
+
+        .date::after {
+            content: attr(dateContent); /* 실무에서는 data-* 형태로 사용 => data-placeholder */
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* 선택된 날짜가 있을 때 */
+        .date:valid::-webkit-datetime-edit-text,
+        :valid::-webkit-datetime-edit-month-field,
+        :valid::-webkit-datetime-edit-day-field,
+        :valid::-webkit-datetime-edit-year-field {
+            display: inline;
+            color: blue;
+        }
+
+        .date:valid::after {
+            display:none;
+        }
+
+        .date:invalid::after {
+            color: red;
+        }
+        
+    </style>
+</head>
+<body>
+    <input type="date" class="date" dateContent="생일을 선택하세요" required/> <!-- required 속성 추가를 해야 valid invalid 적용이 됨 -->
+</body>
+</html>

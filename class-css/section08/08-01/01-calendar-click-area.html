@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>달력 클릭영역 실습</title>
+    <style>
+        .date {
+            position: relative;
+        }
+
+        .date::-webkit-calendar-picker-indicator {
+            background: transparent;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <input type="date" class="date" />
+</body>
+</html>
