@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>페이지네이션 페이지 번호 실습</title>
+    <script>
+        window.onload = () => {
+            const pageBox = new Array(10).fill("page");
+
+            const pages = pageBox.map((el, index) => `
+                <button>${index + 1}</button>
+            `).join("");
+
+            document.getElementById("page_box").innerHTML = pages;
+        };
+        
+    </script>
+</head>
+<body>
+    <div id="page_box"></div>
+</body>
+</html>
