@@ -80,6 +80,11 @@ const diaryContainer = `
             <!-- 아이템 추가되는 곳 -->
         </div>
     </div>
+    <div id="diary_pagination" class="diary_pagination">
+        <button id="prev_btn" class="page_btn" onclick="changePage(event)">이전</button>
+        <div id="page_box" class="page_box"></div>
+        <button id="next_btn" class="page_btn" onclick="changePage(event)">다음</button>
+    </div>
 `
 const dogContainer = `
     <div id="container_table_dog" class="container_table_dog"></div>
@@ -313,7 +318,7 @@ const uploadDiary = () => {
         diaryCnt,
         diaryChat : []
     }
-    diaryLiberary.push(diary)
+    diaryLiberary.unshift(diary)
     localStorage.setItem("diaryArray", JSON.stringify(diaryLiberary));
     openDiaryDone();
     loadDiary(diaryLiberary);
@@ -463,6 +468,7 @@ const delete_diary = () => {
     localStorage.setItem("diaryArray", JSON.stringify(diaryArray));
 
     loadDiary(diaryArray)
+    setDiaryList(diaryArray);
 
     closeDiaryDelete()
     alert("일기가 삭제되었습니다.")
