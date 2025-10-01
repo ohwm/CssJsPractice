@@ -1,5 +1,17 @@
 window.onload = () => {
     changeToDiaryContainer();
+    setFloatingIcon(false);
+}
+
+let currentDiaryList = []; // 현재 보여줄 diary 배열
+
+// 전역변수를 활용하여 페이지네이션과 다이어리 렌더링을 동기화
+// setDiaryList 함수를 통해 currentDiaryList를 업데이트하고
+// render와 renderDiary를 호출
+const setDiaryList = (newList) => {
+  currentDiaryList = newList;
+  renderDiary(1, currentDiaryList);
+  render(1, currentDiaryList);
 }
 
 const darkmode = () => {
@@ -134,7 +146,8 @@ const changeToDiaryContainer = () => {
     document.getElementById("container_nav_change").innerHTML = diaryContainer;
     const diary = JSON.parse(localStorage.getItem("diaryArray"))
     const diaryLiberary = diary === null ? [] : diary
-    loadDiary(diary)
+    loadDiary(diaryLiberary)
+    setDiaryList(diaryLiberary);
 }
 
 const changeToDogContainer = () => {
@@ -302,8 +315,9 @@ const uploadDiary = () => {
     }
     diaryLiberary.push(diary)
     localStorage.setItem("diaryArray", JSON.stringify(diaryLiberary));
-    openDiaryDone()
-    loadDiary(diaryLiberary)
+    openDiaryDone();
+    loadDiary(diaryLiberary);
+    setDiaryList(diaryLiberary);
 }
 
 const filteringDiary = (event) => {
@@ -312,7 +326,8 @@ const filteringDiary = (event) => {
     const diaryArray = JSON.parse(localStorage.getItem("diaryArray"));
     let filteredDiary = emotionValue !== "all" ? diaryArray.filter((el) => el.emotion === emotionValue) : diaryArray
 
-    loadDiary(filteredDiary)
+    loadDiary(filteredDiary);
+    setDiaryList(filteredDiary);
 }
 
 let searchTimer = "NotYet";
@@ -327,6 +342,7 @@ const searchDiary = (event) => {
         let searchedDiary = diaryArray.filter((el) => el.title.includes(keyword))
 
         loadDiary(searchedDiary)
+        setDiaryList(searchedDiary);
     }, 1000);
 }
 
@@ -353,6 +369,40 @@ const loadDiary = (diary) => {
 
     if(diary !== null)
         document.getElementById("table_items").innerHTML = diaryTag.join("")
+}
+
+let currentPage = 1;
+const render = (clickedPage, diaryList) => {
+    const itemsPerPage = 12;
+    const lastPage = Math.ceil(diaryList.length / itemsPerPage);
+    const pageBox = new Array(10).fill("page");
+    const pages = pageBox.map((el, index) => {
+        const pageNumber = index + currentPage;
+
+        return pageNumber <= lastPage ? `
+		    <button 
+				class=${clickedPage === pageNumber ? "pageClicked" : "pageUnclicked"}
+				onclick="renderDiary(${pageNumber}, currentDiaryList);render(${pageNumber}, currentDiaryList)"
+			>
+			${pageNumber}</button>` : `<span> </span>`;
+    }).join("");
+    document.getElementById("page_box").innerHTML = pages;  
+}
+
+const prevPage = () => {
+    currentPage = currentPage > 1 ? currentPage - 5 : 1;
+    render(currentPage); 
+};
+
+const nextPage = () => {
+    currentPage = currentPage + 5 <= lastPage ? currentPage + 5 : currentPage;
+    render(currentPage);
+};
+
+const renderDiary = (num, diaryList) => {
+    const filteredDiaryList = diaryList.filter((el, index) => index <= (num - 1) * 12 + 11 && index >= (num - 1) * 12);
+    console.log(filteredDiaryList);
+    loadDiary(filteredDiaryList);
 }
 
 let diaryNum = -1;

@@ -651,19 +651,36 @@ a {
   z-index: 1;
 }
 
+.diary_pagination {
+    margin-bottom: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.page_num {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: -1px;
+    color: var(--text-color);
+}
+
 /* 푸터는 어떻게 설정하는지 더 공부해보자 */
 .footer {
     background-color: var(--footer);
     width: 100%;
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
     padding: 1.5rem;
     transition: 0.5s;
 }
 
 .footer_container {
-    min-width: 1168px;
+    width: 1168px;
     display: flex;
     flex-direction: column;
     gap: 1rem;
