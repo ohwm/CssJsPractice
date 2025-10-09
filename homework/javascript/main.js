@@ -151,6 +151,7 @@ const changeToDiaryContainer = () => {
     document.getElementById("container_nav_change").innerHTML = diaryContainer;
     const diary = JSON.parse(localStorage.getItem("diaryArray"))
     const diaryLiberary = diary === null ? [] : diary
+
     loadDiary(diaryLiberary)
     setDiaryList(diaryLiberary);
 }
@@ -378,6 +379,15 @@ const loadDiary = (diary) => {
 
 let currentPage = 1;
 const render = (clickedPage, diaryList) => {
+    
+    console.log(diaryList.length)
+    if (diaryList.length <= 60) { // 5페이지 이하일 때
+        document.getElementById("prev_btn").style.display = 'none';
+        document.getElementById("next_btn").style.display = 'none';
+    } else {
+        document.getElementById("prev_btn").style.display = 'inline-block';
+        document.getElementById("next_btn").style.display = 'inline-block';
+    }
     const itemsPerPage = 12;
     const lastPage = Math.ceil(diaryList.length / itemsPerPage);
     const pageBox = new Array(10).fill("page");

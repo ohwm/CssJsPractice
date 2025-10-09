@@ -23,6 +23,7 @@
     --dropdown-hover: #3AB50F0D;
     --dropdown-hover-text: #299C00;
     --dropdown-bg: white;
+    --pagination-bg: #F2F2F2;
 }
 
 .dark {
@@ -44,6 +45,7 @@
     --dropdown-hover: #1C1C1C;
     --dropdown-hover-text: #FFFFFF;
     --dropdown-bg: #000000;
+    --pagination-bg: #333333;
 }
 
 body {
@@ -666,6 +668,38 @@ a {
     line-height: 24px;
     letter-spacing: -1px;
     color: var(--text-color);
+}
+
+.page_btn{
+    display: flex;
+    gap: 1rem;
+}
+
+.pageClicked {
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--pagination-bg);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -1px;
+    color: var(--text-color);
+}
+
+.pageUnclicked {
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -1px;
+    color: #777777;
 }
 
 /* 푸터는 어떻게 설정하는지 더 공부해보자 */
